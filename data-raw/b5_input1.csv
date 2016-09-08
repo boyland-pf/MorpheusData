@@ -1,0 +1,7 @@
+"uniqueid","seq","response","detailed","treatment"
+"a","N1",123.23,"descr1","T1"
+"a","N2",231.12,"descr2","T1"
+"a","N3",231.23,"descr3","T1"
+"b","N1",343.23,"descr1","T2"
+"b","N2",281.13,"descr2","T2"
+"b","N3",901.23,"descr3","T2"
