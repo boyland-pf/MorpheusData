@@ -20,18 +20,18 @@ df_out = dat %>% gather(Channel, P, P.1:P.3) %>%
 
 write.csv(df_out, "data-raw/p5_output1.csv", row.names=FALSE)
 
-output1 <- read.csv("data-raw/p5_output1.csv", check.names = FALSE)
-fctr.cols <- sapply(output1, is.factor)
-int.cols <- sapply(output1, is.integer)
+p5_output1 <- read.csv("data-raw/p5_output1.csv", check.names = FALSE)
+fctr.cols <- sapply(p5_output1, is.factor)
+int.cols <- sapply(p5_output1, is.integer)
 
-output1[, fctr.cols] <- sapply(output1[, fctr.cols], as.character)
-output1[, int.cols] <- sapply(output1[, int.cols], as.numeric)
-save(output1, file = "data/p5_output1.rdata")
+p5_output1[, fctr.cols] <- sapply(p5_output1[, fctr.cols], as.character)
+p5_output1[, int.cols] <- sapply(p5_output1[, int.cols], as.numeric)
+save(p5_output1, file = "data/p5_output1.rdata")
 
-input1 <- read.csv("data-raw/p5_input1.csv", check.names = FALSE)
-fctr.cols <- sapply(input1, is.factor)
-int.cols <- sapply(input1, is.integer)
+p5_input1 <- read.csv("data-raw/p5_input1.csv", check.names = FALSE)
+fctr.cols <- sapply(p5_input1, is.factor)
+int.cols <- sapply(p5_input1, is.integer)
 
-input1[, fctr.cols] <- sapply(input1[, fctr.cols], as.character)
-input1[, int.cols] <- sapply(input1[, int.cols], as.numeric)
-save(input1, file = "data/p5_input1.rdata")
+p5_input1[, fctr.cols] <- sapply(p5_input1[, fctr.cols], as.character)
+p5_input1[, int.cols] <- sapply(p5_input1[, int.cols], as.numeric)
+save(p5_input1, file = "data/p5_input1.rdata")
