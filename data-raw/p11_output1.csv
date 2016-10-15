@@ -1,0 +1,15 @@
+"clientid","key","value","value"
+1,"ProductA","chair",1
+2,"ProductA","table",2
+3,"ProductA","plate",1
+4,"ProductA","table",1
+5,"ProductA","chair",2
+6,"ProductA","table",3
+7,"ProductA","plate",2
+1,"ProductB","table",3
+2,"ProductB","doll",1
+3,"ProductB","shoes",2
+4,"ProductB","door",2
+5,"ProductB","computer",1
+6,"ProductB","computer",1
+7,"ProductB","plate",1
