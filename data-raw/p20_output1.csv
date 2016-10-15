@@ -1,0 +1,4 @@
+"group","num_users","action_rate_after","action_rate_before"
+"a",100,0.15,0.1
+"b",200,0.18,0.2
+"c",300,0.35,0.3
