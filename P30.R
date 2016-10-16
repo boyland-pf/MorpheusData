@@ -10,7 +10,7 @@ write.csv(dat, "data-raw/p30_input1.csv", row.names=FALSE)
 
 df_out = dat %>% 
 gather("key", "value", 1:4) %>% group_by(key) %>% 
-summarise( nMax = max(value) )
+summarise( nMax = max(value) ) %>% arrange(nMax)
 
 write.csv(df_out, "data-raw/p30_output1.csv", row.names=FALSE)
 
