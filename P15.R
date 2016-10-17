@@ -4,19 +4,18 @@ library(tidyr)
 library(MorpheusData)
 
 #############benchmark 1
-dat <- read.table(text=
-"id choice  c  d
-1  5  9      110 
-2  6  0 2015
-3  7 11 2016
-", header=T)
+dat <- data.frame(Timepoint=c(0L, 7L, 14L, 21L, 28L), Group1=c(50L, 60L, 66L, 88L, 90L),
+             Error_Group1=c(3, 4, 6, 8, 2), Group2=c(30L, 60L, 90L, 120L, 150L),
+             Error_Group2=c(10L, 14L, 16L, 13L, 25L))
 
 write.csv(dat, "data-raw/p15_input1.csv", row.names=FALSE)
 
-df_out = dat %>% spread(choice, choice) %>%
-    gather(choice, drop_me, `5`:`7`) %>%
-    select(-drop_me) %>%
-    arrange(id, choice)
+df_out = dat %>%
+  gather (g, m, -Timepoint) %>%
+  separate (g, c("Measure", "mGroup"), -2) %>% 
+  spread (Measure, m) %>% 
+  select (Timepoint, mGroup, Group, Error_Group) %>%
+  arrange (Group) 
 
 write.csv(df_out, "data-raw/p15_output1.csv", row.names=FALSE)
 
