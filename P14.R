@@ -9,8 +9,7 @@ df1 <- structure(list(Name = c("A", "B", "C"), Total = c(43L, 56L, 98L
 -3L))
 
 df2 <- structure(list(Name = c("A", "B", "C"), col1 = c(2L, 0L, 3L), 
-col2 = c(3L, 4L, 0L), col3 = c(4L, 0L, 0L), col4 = c(0L, 
-0L, 3L)), .Names = c("Name", "col1", "col2", "col3", "col4"
+col2 = c(3L, 4L, 0L), col3 = c(4L, 0L, 0L)), .Names = c("Name", "col1", "col2", "col3" 
 ), class = "data.frame", row.names = c(NA, -3L))
 
 write.csv(df1, "data-raw/p14_input1.csv", row.names=FALSE)
@@ -19,8 +18,9 @@ write.csv(df2, "data-raw/p14_input2.csv", row.names=FALSE)
 df_out = df2 %>%
 inner_join(df1) %>%
 gather(variable, value, -Name, -Total) %>%
-mutate(value = value/Total) %>%
-spread(variable, value)
+mutate(ratio = value/Total) %>%
+select(-value) %>%
+spread(variable, ratio)
 
 write.csv(df_out, "data-raw/p14_output1.csv", row.names=FALSE)
 
