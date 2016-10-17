@@ -4,17 +4,17 @@ library(tidyr)
 library(MorpheusData)
 
 #############benchmark 1
-dat <- data.frame(Timepoint=c(0L, 7L, 14L, 21L, 28L), Group1=c(50L, 60L, 66L, 88L, 90L),
-             Error_Group1=c(3, 4, 6, 8, 2), Group2=c(30L, 60L, 90L, 120L, 150L),
-             Error_Group2=c(10L, 14L, 16L, 13L, 25L))
+dat <- data.frame(Timepoint=c(0L, 7L, 14L), Group1=c(50L, 60L, 66L),
+                  Error1_Group1=c(3, 4, 6), Group2=c(30L, 60L, 90L),
+                  Error2_Group1=c(10L, 14L, 16L))
 
 write.csv(dat, "data-raw/p15_input1.csv", row.names=FALSE)
 
 df_out = dat %>%
-  gather (g, m, Error_Group1,Error_Group2) %>%
+  gather (g, m, Error1_Group1,Error2_Group1) %>%
   separate (g, c("Measure", "mGroup")) %>% 
   spread (Measure, m) %>% 
-  select (1,2,3,5,4) %>%
+  select (1,2,3,5,4,6) %>%
   arrange (Timepoint) 
 
 write.csv(df_out, "data-raw/p15_output1.csv", row.names=FALSE)

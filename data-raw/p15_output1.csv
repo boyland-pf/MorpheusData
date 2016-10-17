@@ -1,11 +1,4 @@
-"Timepoint","Group1","Group2","Error","mGroup"
-0,50,30,3,"Group1"
-0,50,30,10,"Group2"
-7,60,60,4,"Group1"
-7,60,60,14,"Group2"
-14,66,90,6,"Group1"
-14,66,90,16,"Group2"
-21,88,120,8,"Group1"
-21,88,120,13,"Group2"
-28,90,150,2,"Group1"
-28,90,150,25,"Group2"
+"Timepoint","Group1","Group2","Error1","mGroup","Error2"
+0,50,30,3,"Group1",10
+7,60,60,4,"Group1",14
+14,66,90,6,"Group1",16
