@@ -11,11 +11,11 @@ dat <- data.frame(Timepoint=c(0L, 7L, 14L, 21L, 28L), Group1=c(50L, 60L, 66L, 88
 write.csv(dat, "data-raw/p15_input1.csv", row.names=FALSE)
 
 df_out = dat %>%
-  gather (g, m, -Timepoint) %>%
-  separate (g, c("Measure", "mGroup"), -2) %>% 
+  gather (g, m, Error_Group1,Error_Group2) %>%
+  separate (g, c("Measure", "mGroup")) %>% 
   spread (Measure, m) %>% 
-  select (Timepoint, mGroup, Group, Error_Group) %>%
-  arrange (Group) 
+  select (1,2,3,5,4) %>%
+  arrange (Timepoint) 
 
 write.csv(df_out, "data-raw/p15_output1.csv", row.names=FALSE)
 
