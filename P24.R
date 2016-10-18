@@ -14,7 +14,7 @@ dat <- read.table(text=
 
 write.csv(dat, "data-raw/p24_input1.csv", row.names=FALSE)
 
-df_out = dat %>% gather(year, value, yr1:yr4) %>% filter(year > 2020 ) %>% select(-year) %>% arrange(id)
+df_out = dat %>% gather(year, value, yr1:yr4) %>% filter(year != "yr1" ) %>% select(-year) %>% arrange(id)
 
 write.csv(df_out, "data-raw/p24_output1.csv", row.names=FALSE)
 
