@@ -18,7 +18,7 @@ Second       3
 write.csv(dat, "data-raw/p9_input1.csv", row.names=FALSE)
 
 df_out = dat %>% group_by(Category) %>% 
-summarize(Frequency = sum(Frequency))
+summarize(Freq = sum(Frequency))
 
 write.csv(df_out, "data-raw/p9_output1.csv", row.names=FALSE)
 
