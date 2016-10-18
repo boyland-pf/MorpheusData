@@ -10,15 +10,11 @@ dat <- read.table(text=
 2 1026 2062 3071 4026 yr2
 3 1036 2006 3098 4038 yr1
 4 1056 2020 3037 4001 yr4
-5 1088 2017 3075 4037 yr3
-6 1019 2065 3089 4083 yr4
-7 1085 2036 3020 4032 yr1
-8 1096 2072 3061 4045 yr3
 ", header=T)
 
 write.csv(dat, "data-raw/p24_input1.csv", row.names=FALSE)
 
-df_out = dat %>% gather(year, value, yr1:yr4) %>% filter(var == year) %>% select(-year) %>% arrange(id)
+df_out = dat %>% gather(year, value, yr1:yr4) %>% filter(year > 2020 ) %>% select(-year) %>% arrange(id)
 
 write.csv(df_out, "data-raw/p24_output1.csv", row.names=FALSE)
 
