@@ -15,8 +15,8 @@ dat = data.frame(
 write.csv(dat, "data-raw/p19_input1.csv", row.names=FALSE)
 
 df_out = dat %>% spread(model, output) %>%
-gather(model, output, -sequence, -foo) %>%
-arrange(sequence, model)
+gather(key, value, -sequence, -foo) %>%
+arrange(sequence, key)
 
 write.csv(df_out, "data-raw/p19_output1.csv", row.names=FALSE)
 
