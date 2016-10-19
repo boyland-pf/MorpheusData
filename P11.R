@@ -14,8 +14,8 @@ dat <-data.frame(
 
 write.csv(dat, "data-raw/p11_input1.csv", row.names=FALSE)
 
-df1 <- dat %>% gather(key, value, c(2,4)) %>% select(-c(2,3))
-df2 <- dat %>% gather(key, value, c(3,5)) %>% select(c(5))
+df1 <- dat %>% gather(key1, value1, c(2,4)) %>% select(-c(2,3))
+df2 <- dat %>% gather(key2, value2, c(3,5)) %>% select(c(5))
 df_out = cbind(df1,df2)
 
 write.csv(df_out, "data-raw/p11_output1.csv", row.names=FALSE)
