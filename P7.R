@@ -4,11 +4,13 @@ library(tidyr)
 library(MorpheusData)
 
 #############benchmark 1
-dat <- subset(mtcars, gear>3 & cyl >= 4 & hp > 100)
+#dat <- subset(mtcars, gear>3 & cyl >= 4 & hp > 100)
+dat <- subset(mtcars, gear>4 & cyl >= 4 & hp > 100 )
+dat1 = select(dat,mpg,disp,gear, vs)
 
-write.csv(dat, "data-raw/p7_input1.csv", row.names=FALSE)
+write.csv(dat1, "data-raw/p7_input1.csv", row.names=FALSE)
 
-df_out = dat %>% group_by(gear, vs) %>% 
+df_out = dat1 %>% group_by(gear, vs) %>% 
 summarize(mean_disp = mean (disp)) %>%
 spread(vs, mean_disp)
 
