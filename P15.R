@@ -4,9 +4,15 @@ library(tidyr)
 library(MorpheusData)
 
 #############benchmark 1
-dat <- data.frame(Timepoint=c(0L, 7L, 14L), Group1=c(50L, 60L, 66L),
-                  Error1_Group1=c(3, 4, 6), Group2=c(30L, 60L, 90L),
-                  Error2_Group1=c(10L, 14L, 16L))
+#dat <- data.frame(Timepoint=c(0L, 7L, 14L), Group1=c(50L, 60L, 66L),
+#                  Error1_Group1=c(3, 4, 6), Group2=c(30L, 60L, 90L),
+#                  Error2_Group1=c(10L, 14L, 16L))
+
+
+dat <- data.frame(Timepoint=c(7L, 14L), Group1=c(60L, 66L),
+                  Error1_Group1=c(4, 6), Group2=c(60L, 90L),
+                  Error2_Group1=c(14L, 16L))
+
 
 write.csv(dat, "data-raw/p15_input1.csv", row.names=FALSE)
 
