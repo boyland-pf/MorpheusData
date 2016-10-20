@@ -5,15 +5,15 @@ library(MorpheusData)
 
 #############benchmark 1
 dat <- read.table(text=
-"custno  TrainingType    TrainingDate    1   2      
-100     Presentation    2013-11-26    29.85  49.75  
-100     Presentation    2014-02-25    122.70 49.75 
-100     Training        2013-03-06    0.00   9.95 
+"custno  1   2      
+100      29.85  49.75  
+100      122.70 49.75 
+100      0.00   9.95 
 ", header=T)
 
 write.csv(dat, "data-raw/p23_input1.csv", row.names=FALSE)
 
-df_out = gather(dat, month, spent, 4:5) %>%
+df_out = gather(dat, month, spent, 2:3) %>%
 group_by(custno) %>%
 summarise(totalspent = sum(spent)) %>%
 arrange(desc(totalspent))

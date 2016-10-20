@@ -5,11 +5,11 @@ library(MorpheusData)
 
 #############benchmark 1
 dat <- read.table(text=
-"obs pre.data1   post.data1  pre.data2   post.data2  pre.data3   post.data3
-1   0.40    0.12    0.61    0.15    0.58    0.06
-2   0.21    0.05    0.18    0.49    0.35    0.24
-3   0.48    0.85    0.00    0.62    0.96    0.37
-4   0.66    0.29    0.88    0.56    0.13    0.72
+"obs pre.data1   post.data1  pre.data2   post.data2
+1   0.40    0.12    0.61    0.15
+2   0.21    0.05    0.18    0.49
+3   0.48    0.85    0.00    0.62
+4   0.66    0.29    0.88    0.56
 ", header=T)
 
 write.csv(dat, "data-raw/p21_input1.csv", row.names=FALSE)

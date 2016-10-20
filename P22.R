@@ -7,9 +7,7 @@ library(MorpheusData)
 dat <- read.table(text=
 "subject  cohort    replicate val1   val2
   A     control       1       10     0.1
-  A     control       2       15     0.3
   A     experim       1       40     0.7
-  A     experim       2       45     0.9
   B     control       1        5     0.3     
   B     experim       1       30     0.0
 ", header=T)

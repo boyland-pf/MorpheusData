@@ -4,15 +4,14 @@ library(tidyr)
 library(MorpheusData)
 
 #############benchmark 1
-dat = data.frame(group=c('a', 'a', 'b', 'b', 'c', 'c'),
-                  times=c('before', 'after', 'before', 'after', 'before', 'after'),
-                  action_rate=c(0.1,0.15, 0.2, 0.18,0.3, 0.35),
-                  action_rate2=c(0.2,0.25, 0.3, 0.28,0.4, 0.45),
-                  num_users=c(100, 100, 200, 200, 300, 300))
+dat = data.frame(group=c('a', 'a', 'b', 'b'),
+                  times=c('before', 'after', 'before', 'after'),
+                  action_rate=c(0.1,0.15, 0.2, 0.18),
+                  action_rate2=c(0.2,0.25, 0.3, 0.28))
 
 write.csv(dat, "data-raw/p20_input1.csv", row.names=FALSE)
 
-df_out = dat %>% gather(key, value, -group, -times, -num_users) %>%
+df_out = dat %>% gather(key, value, -group, -times) %>%
 unite(col, key, times) %>%
 spread(col, value)
 
