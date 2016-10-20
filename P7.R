@@ -6,7 +6,7 @@ library(MorpheusData)
 #############benchmark 1
 #dat <- subset(mtcars, gear>3 & cyl >= 4 & hp > 100)
 dat <- subset(mtcars, gear>4 & cyl >= 4 & hp > 100 )
-dat1 = select(dat,mpg,disp,gear, vs)
+dat1 = select(dat,disp,gear, vs) %>% filter(disp < 150)
 
 write.csv(dat1, "data-raw/p7_input1.csv", row.names=FALSE)
 
