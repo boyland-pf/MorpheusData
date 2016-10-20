@@ -8,8 +8,6 @@ dat <- read.table(text=
 "ID    T    P.1 P.2 P.3
 1   24.3    10.2    5.5 2.1
 2   23.4    10.4    5.7 2.8
-3   22.1    10.5    5.9 3.1
-4   19.9    10.2    5.2 2.4
 ", header=T)
 
 write.csv(dat, "data-raw/p5_input1.csv", row.names=FALSE)
