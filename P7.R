@@ -5,14 +5,19 @@ library(MorpheusData)
 
 #############benchmark 1
 #dat <- subset(mtcars, gear>3 & cyl >= 4 & hp > 100)
-dat <- subset(mtcars, gear>4 & cyl >= 4 & hp > 100 )
-dat1 = select(dat,disp,gear, vs) 
+dat <- read.table(text=
+"GeneID     D.1     T.1      D.8     T.8
+A2M 8876.5 510.5 4318.3 8957.7 4092.4
+ABL1 2120.8 480.3 1694.6   2471 1784.1
+ACP1 1266.6 213.8 1337.9  831.5  814.1
+", header=T)
 
-write.csv(dat1, "data-raw/p7_input1.csv", row.names=FALSE)
+write.csv(dat, "data-raw/p7_input1.csv", row.names=FALSE)
 
-df_out = dat1 %>% group_by(gear, vs) %>% 
-summarize(mean_disp = mean (disp)) %>%
-spread(vs, mean_disp)
+df_out = dat %>% gather(pt.num.type, value, 2:3) %>%
+     separate(pt.num.type, c("type", "pt.num")) %>%
+     spread(type, value) %>%
+     mutate(Ratio = D/T) %>% select(-`D.8`, -`T.8`)
 
 write.csv(df_out, "data-raw/p7_output1.csv", row.names=FALSE)
 
