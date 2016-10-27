@@ -4,9 +4,14 @@ library(tidyr)
 library(MorpheusData)
 
 #############benchmark 1
-dat <- data.frame(message.id = c(1,1,2,3,3),
-                 sender = c("C","A","D","B","B"),
-                 recipient = c("B","C","B","A","D"))
+#original version.
+#dat <- data.frame(message.id = c(1,1,2,3,3),
+#                 sender = c("C","A","D","B","B"),
+#                 recipient = c("B","C","B","A","D"))
+
+dat <- data.frame(message.id = c(1,1,2,3,3,3),
+                 sender = c("A","A","A","B","C","D"),
+                 recipient = c("A","C","B","C","D","B"))
 
 # data to reproduce unsoundness of spec3.
 #dat <- data.frame(message.id = c(1,2,3),
