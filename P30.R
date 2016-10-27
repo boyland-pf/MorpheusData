@@ -3,14 +3,14 @@ library(dplyr)
 library(tidyr)
 library(MorpheusData)
 
-#############benchmark 1
-dat = subset(mtcars, gear>3 & cyl >= 4 & hp > 100 & vs==1) %>% select(mpg,cyl,disp)
+#############benchmark 30
+dat <- data.frame(sym=c(rep('a', 4), rep('b', 4)), a1=rep(1:2, 4), 
+                 a2=rep(2:1, each=4), b1=rep(1:8), b2=rep(1:8))
 
 write.csv(dat, "data-raw/p30_input1.csv", row.names=FALSE)
 
-df_out = dat %>% 
-gather("key", "value", 1:3) %>% group_by(key) %>% 
-summarise( nMax = max(value) ) %>% arrange(nMax)
+df_out = inner_join(dat %>% group_by(sym, a1) %>% summarise(b1.mean=mean(b1)),
+           dat %>% group_by(sym, a2) %>% summarise(b2.mean=mean(b2)))
 
 write.csv(df_out, "data-raw/p30_output1.csv", row.names=FALSE)
 

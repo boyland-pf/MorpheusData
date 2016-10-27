@@ -3,27 +3,24 @@ library(dplyr)
 library(tidyr)
 library(MorpheusData)
 
-#############benchmark 1
-tmp <- read.table(text=
-"fruit1 fruit2
-guava   kiwi
-pear  apple
-guava   kiwi
-pear  guava
-apple   kiwi
-apple banana
-", header=T)
-
-dat = tmp %>% do(data.frame(fruita=unlist(.), fruitb=unlist(.[,2:1])))
-
+#############benchmark 29
+data(varespec, package = "vegan")
+attributes <- data.frame(
+  Species = c(colnames(varespec), "spec1", "spec2"),
+  Attribute = c(rep(c("MI", "PI"), c(14, 30)), "MI", "PI")
+)
+tmp1 = select(varespec,1:4)
+tmp2 = slice(tmp1,1:8)
+dat = add_rownames(tmp2,"ID")
 
 write.csv(dat, "data-raw/p29_input1.csv", row.names=FALSE)
 
-df_out = dat %>%
-group_by(fruita) %>% 
-summarise(Partners=n_distinct(fruitb)) %>% 
-arrange(Partners)
-
+df_out = dat %>% 
+  gather(Species, Value, -ID) %>%
+  inner_join(attributes) %>% 
+  filter(Attribute == "MI") %>% 
+  group_by(ID) %>% 
+  summarise(Total = sum(Value))
 
 write.csv(df_out, "data-raw/p29_output1.csv", row.names=FALSE)
 
