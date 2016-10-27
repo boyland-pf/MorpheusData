@@ -1,8 +1,3 @@
-"firstname","field"
-"Angelo","city"
-"Angelo","state"
-"Angelo","job"
-"Billy","state"
-"Billy","job"
-"Doug","job"
-"Tom","city"
+"date","directorName","companyName","rank"
+"2015-08-01","Sergey","vino",29
+"2015-08-02","Sergey","vino",42

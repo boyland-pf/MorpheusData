@@ -2,21 +2,17 @@
 library(dplyr)
 library(tidyr)
 library(MorpheusData)
+library(data.table)
 
-#############benchmark 1
-firstname <- c('Doug','Tom','Glenn','Billy','Angelo')
-city <- c('Tulsa','Unknown','Miami','Houston','Unknown')
-state <- c('OK','CA','FL','Unknown','Unknown')
-job <- c('Unknown','Plumber','Professor','Unknown','Unknown')
-dat <- data.frame(firstname, city, state, job)
+#############benchmark 26
+dat <- as.data.table(data.frame(date = c("2015-08-01","2015-08-02","2015-08-05","2015-08-01","2015-08-09","2015-08-10"),
+                                 directorName = c("Sergey","Sergey","Mike","Mike","Jay","Jay"),
+                                 companyName = c("vino","vino","bolder","bolder","bolder","bolder"),
+                                 rank = c(29,42,29,27,2,10)))
 
 write.csv(dat, "data-raw/p26_input1.csv", row.names=FALSE)
 
-df_out = dat %>% 
-gather(field, value, -firstname) %>% 
-filter(value == "Unknown") %>% 
-select(-value) %>% 
-arrange(firstname)
+df_out = inner_join(dat,dat %>% group_by(companyName) %>% summarise(min = min(rank)) %>% filter(min > 10) %>% select(companyName))
 
 write.csv(df_out, "data-raw/p26_output1.csv", row.names=FALSE)
 

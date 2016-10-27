@@ -1,6 +1,7 @@
-"firstname","city","state","job"
-"Doug","Tulsa","OK","Unknown"
-"Tom","Unknown","CA","Plumber"
-"Glenn","Miami","FL","Professor"
-"Billy","Houston","Unknown","Unknown"
-"Angelo","Unknown","Unknown","Unknown"
+"date","directorName","companyName","rank"
+"2015-08-01","Sergey","vino",29
+"2015-08-02","Sergey","vino",42
+"2015-08-05","Mike","bolder",29
+"2015-08-01","Mike","bolder",27
+"2015-08-09","Jay","bolder",2
+"2015-08-10","Jay","bolder",10
