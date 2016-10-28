@@ -4,25 +4,29 @@ library(tidyr)
 library(MorpheusData)
 
 #############benchmark 1
-scotland_weather <- data.frame(
-    Jan = c(294, 292, 276),
-    Year.1 = c(1993, 1928, 2008),
-    Feb = c(278, 259, 245),
-    Year.2 = c(1990, 1997, 2002)
-)
 
-# split it into two data frames
-df1 <- scotland_weather[seq(1, 4, 2)]
-df2 <- scotland_weather[seq(2, 4, 2)]
+dat <- read.table(text=
+"Id Group Var1 Var2
+1     A good    6
+2     A  bad    9
+3     A good   10
+4     A good    7
+5     B  bad    9
+6     B  bad    1
+7     B  bad    6
+8     B good    6
+9     C good    1
+10    C  bad    8
+11    C good    4
+12    C  bad    2
+", header=T)
 
-write.csv(df1, "data-raw/p17_input1.csv", row.names=FALSE)
-write.csv(df2, "data-raw/p17_input2.csv", row.names=FALSE)
+write.csv(dat, "data-raw/p17_input1.csv", row.names=FALSE)
 
-
-month=gather(df1, month, rainfall)
-year=gather(df2, yearId, year)
-tmp=cbind(year, month)
-df_out = select(tmp,-yearId)
+df_out = dat %>% group_by(Group, Var1) %>%
+    summarise(Total = sum(Var2)) %>%
+    spread(Var1,Total) %>%
+    filter(good>6)
 
 write.csv(df_out, "data-raw/p17_output1.csv", row.names=FALSE)
 
@@ -41,12 +45,3 @@ int.cols <- sapply(p17_input1, is.integer)
 p17_input1[, fctr.cols] <- sapply(p17_input1[, fctr.cols], as.character)
 p17_input1[, int.cols] <- sapply(p17_input1[, int.cols], as.numeric)
 save(p17_input1, file = "data/p17_input1.rdata")
-
-
-p17_input2 <- read.csv("data-raw/p17_input2.csv", check.names = FALSE)
-fctr.cols <- sapply(p17_input2, is.factor)
-int.cols <- sapply(p17_input2, is.integer)
-
-p17_input2[, fctr.cols] <- sapply(p17_input2[, fctr.cols], as.character)
-p17_input2[, int.cols] <- sapply(p17_input2[, int.cols], as.numeric)
-save(p17_input2, file = "data/p17_input2.rdata")
