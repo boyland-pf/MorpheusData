@@ -1,11 +1,10 @@
-"sequence","foo","model","output","real"
-1,3,"a",12,12
-1,3,"b",29,12
-1,3,"c",10,12
-1,3,"d",38,12
-1,3,"e",10,12
-2,3,"a",38,15
-2,3,"b",10,15
-2,3,"c",29,15
-2,3,"d",56,15
-2,3,"e",10,15
+"12:10","12:20","12:30"
+"nuclear","nuclear","nuclear"
+"nuclear","nuclear","child"
+"child","child","child"
+"child","child","child"
+"child","child","child"
+"nuclear and acquaintance","nuclear and acquaintance","nuclear and acquaintance"
+"nuclear and acquaintance","nuclear and acquaintance","nuclear and acquaintance"
+"notnotnot","notnotnot","notnotnot"
+"nuclear","nuclear","nuclear"
