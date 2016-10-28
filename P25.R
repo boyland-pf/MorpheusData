@@ -4,20 +4,17 @@ library(tidyr)
 library(MorpheusData)
 
 #############benchmark 1
-dat <- read.table(text=
-"user  blue green   red
-1 Y N N
-2 N N Y
-3 Y N N
-4 N Y N
-", header=T)
+a <- c(1,1,4,4,1,1)
+b <- c(1,2,3,3,2,2)
+dat <- data.frame(a,b)
 
 write.csv(dat, "data-raw/p25_input1.csv", row.names=FALSE)
 
-df_out = dat %>% gather(color, TF, -user) %>% 
-filter(TF == "Y") %>% 
-select(-TF) %>% 
-arrange(user)
+dat %>%
+  unite(key_ab, a, b) %>%
+  group_by(key_ab) %>%
+  summarise(e = n()) %>%
+  filter(e>1) -> df_out
 
 write.csv(df_out, "data-raw/p25_output1.csv", row.names=FALSE)
 
