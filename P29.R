@@ -14,6 +14,7 @@ tmp2 = slice(tmp1,1:8)
 dat = add_rownames(tmp2,"ID")
 
 write.csv(dat, "data-raw/p29_input1.csv", row.names=FALSE)
+write.csv(attributes, "data-raw/p29_input2.csv", row.names=FALSE)
 
 df_out = dat %>% 
   gather(Species, Value, -ID) %>%
