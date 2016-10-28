@@ -7,9 +7,9 @@ library(MorpheusData)
 dat <- read.table(text=
 "Player Team	Shots	Passes	Tackles
 Abdoun	Algeria       0      6       0
-Abe 	Japan       0    101      14     
+Abe 	Japan       3    101      14     
 Abidal  France         0     91       6     
-Abreu       Uruguay     0     15       0     
+Abreu       Uruguay     5     15       0     
 ", header=T)
 
 write.csv(dat, "data-raw/p22_input1.csv", row.names=FALSE)
