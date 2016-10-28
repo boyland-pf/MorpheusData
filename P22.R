@@ -5,20 +5,21 @@ library(MorpheusData)
 
 #############benchmark 1
 dat <- read.table(text=
-"subject  cohort    replicate val1   val2
-  A     control       1       10     0.1
-  A     experim       1       40     0.7
-  B     control       1        5     0.3     
-  B     experim       1       30     0.0
+"Player Team	Time	Shots	Passes	Tackles
+Abdoun	Algeria    16     0      6       0
+Abe 	Japan   351     0    101      14     
+Abidal  France     180     0     91       6     
+Abou	France   270     1    111       5     
+Aboubakar  Cameroon       46     2     16       0     
+Abreu       Uruguay       72     0     15       0     
 ", header=T)
 
 write.csv(dat, "data-raw/p22_input1.csv", row.names=FALSE)
 
-df_out = dat %>%
-   gather(Var, Val, val1:val2) %>%
-   spread(cohort, Val) %>% 
-   group_by(subject, replicate, Var) %>%
-   summarise(ratio = experim/control) %>% spread(Var, ratio)
+df_out =  dat %>% gather(Var, Val, -`Player`, -`Team`) %>% 
+       filter(Var!= "Shots") %>%
+       group_by(Var) %>% 
+       summarise(Mean = mean(Val))
 
 write.csv(df_out, "data-raw/p22_output1.csv", row.names=FALSE)
 
