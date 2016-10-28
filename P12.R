@@ -3,20 +3,29 @@ library(dplyr)
 library(tidyr)
 library(MorpheusData)
 
-#############benchmark 1
+#############benchmark 12
 dat <- read.table(text=
-"dd gg site
-5  10 A
-7  8  A
-5  6  B 
-7  9  B 
+"flight origin dest
+1141    JFK   MIA
+725    JFK   BQN
+461    LGA   ATL
+1696    EWR   ORD
+507    EWR   FLL
+5708    LGA   IAD
+79    JFK   MCO
+301    LGA   ORD
+11    EWR   SEA
+495    JFK   SEA
+1670    EWR   SEA
 ", header=T)
 
 write.csv(dat, "data-raw/p12_input1.csv", row.names=FALSE)
 
-df_out = dat %>% filter(site == "B") %>%
-spread(key = site, value = gg) %>%
-inner_join(filter(dat, site != "B"))
+df_out = dat %>% 
+    filter(dest=="SEA") %>%
+    group_by(origin) %>% 
+    dplyr::summarise (n = n()) %>%
+    dplyr::mutate(freq = n / sum(n))
 
 write.csv(df_out, "data-raw/p12_output1.csv", row.names=FALSE)
 
