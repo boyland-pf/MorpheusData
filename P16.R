@@ -5,22 +5,21 @@ library(MorpheusData)
 
 #############benchmark 1
 dat <- read.table(text=
-"client year rev
-A 2014  10
-B 2014  20
-A 2013  10
-B 2013  20
-A 2012  10
-B 2012  20
-B 2012  35
+"ID  Color    Type     W1     W2     
+1    red Outdoor  74.22  26.86  
+2    red  Indoor  78.59 138.80  
+7    red  Indoor  38.41  84.81
+8    red Outdoor 140.68  93.33
+9 yellow Outdoor  65.95 104.31
 ", header=T)
 
 write.csv(dat, "data-raw/p16_input1.csv", row.names=FALSE)
 
-df_out = dat %>% 
-  group_by(year, client) %>%
-  summarise(tot = sum(rev)) %>%
-  arrange(year)
+df_out = dat %>%  gather(Week, Value, 4:5) %>%
+        filter(Value > 38.41) %>%
+        group_by(Color,Week) %>%
+        summarise(Count = n()) %>%
+        spread(Week, Count)
 
 write.csv(df_out, "data-raw/p16_output1.csv", row.names=FALSE)
 
