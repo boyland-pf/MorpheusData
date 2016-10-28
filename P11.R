@@ -5,18 +5,16 @@ library(MorpheusData)
 
 #############benchmark 1
 dat <-data.frame(
-   clientid=1:7,
-   ProductA=c("chair","table","plate","table","chair","table","plate"),
-   QuantityA=c(1,2,1,1,2,3,2),
-   ProductB=c("table","doll","shoes","door","computer","computer","plate"),
-   QuantityB=c(3,1,2,2,1,1,1)
+   expr=c("base__1d4","base__1d4","base__1d5","base__1d5","dplyr_1d4","dplyr_1d4","dplyr_1d5","dplyr_1d5"),
+   time=c(4203379,4219165,59249811,59249833,4911550,4911533,72271322,63373463)
 )
 
 write.csv(dat, "data-raw/p11_input1.csv", row.names=FALSE)
 
-df1 <- dat %>% gather(key1, value1, c(2,4)) %>% select(-c(2,3))
-df2 <- dat %>% gather(key2, value2, c(3,5)) %>% select(c(5))
-df_out = cbind(df1,df2)
+dat %>% group_by(expr) %>% summarise(mean = mean(time)) %>%
+   separate(expr, c("system", "size")) %>%
+   spread(system, mean) %>% mutate(ratio = base / dplyr) -> df_out
+
 
 write.csv(df_out, "data-raw/p11_output1.csv", row.names=FALSE)
 
