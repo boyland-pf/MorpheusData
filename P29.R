@@ -4,14 +4,24 @@ library(tidyr)
 library(MorpheusData)
 
 #############benchmark 29
-data(varespec, package = "vegan")
-attributes <- data.frame(
-  Species = c(colnames(varespec), "spec1", "spec2"),
-  Attribute = c(rep(c("MI", "PI"), c(14, 30)), "MI", "PI")
-)
-tmp1 = select(varespec,1:4)
-tmp2 = slice(tmp1,1:8)
-dat = add_rownames(tmp2,"ID")
+attributes <- read.table(text=
+"Species	Attribute
+Callvulg        MI
+Empenigr        MI
+Vaccmyrt        MI
+Cladfimb        PI
+Cladcris        PI
+Cladchlo        PI
+", header=T)
+
+dat <- read.table(text=
+"ID Callvulg Empenigr Rhodtome 
+1     0.55    11.13     0.00    
+2     0.67     0.17     0.00     
+3     0.10     1.55     0.00    
+4     4.73     5.12     1.55  
+5     4.47     7.33     0.00",
+header=T)
 
 write.csv(dat, "data-raw/p29_input1.csv", row.names=FALSE)
 write.csv(attributes, "data-raw/p29_input2.csv", row.names=FALSE)

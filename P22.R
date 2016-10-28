@@ -5,13 +5,11 @@ library(MorpheusData)
 
 #############benchmark 1
 dat <- read.table(text=
-"Player Team	Time	Shots	Passes	Tackles
-Abdoun	Algeria    16     0      6       0
-Abe 	Japan   351     0    101      14     
-Abidal  France     180     0     91       6     
-Abou	France   270     1    111       5     
-Aboubakar  Cameroon       46     2     16       0     
-Abreu       Uruguay       72     0     15       0     
+"Player Team	Shots	Passes	Tackles
+Abdoun	Algeria       0      6       0
+Abe 	Japan       0    101      14     
+Abidal  France         0     91       6     
+Abreu       Uruguay     0     15       0     
 ", header=T)
 
 write.csv(dat, "data-raw/p22_input1.csv", row.names=FALSE)
