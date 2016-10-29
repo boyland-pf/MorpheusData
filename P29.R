@@ -8,22 +8,22 @@ attributes <- read.table(text=
 "Species	Attribute
 Callvulg        MI
 Empenigr        MI
-Vaccmyrt        MI
-Cladfimb        PI
-Cladcris        PI
-Cladchlo        PI
+Rhodtome        PI
 ", header=T)
 
 dat <- read.table(text=
-"ID Callvulg Empenigr Rhodtome 
-1     0.55    11.13     0.00    
-2     0.67     0.17     0.00     
-3     0.10     1.55     0.00    
-4     4.73     5.12     1.55  
-5     4.47     7.33     0.00",
+"ID  Species Value
+1 Callvulg  0.55
+2 Callvulg  0.67
+3 Callvulg  0.10
+1 Empenigr 11.13
+2 Empenigr  0.17
+3 Empenigr  1.55
+1 Rhodtome  0.00
+2 Rhodtome  0.00
+3 Rhodtome  3.00",
 header=T)
 
-dat = gather(dat, Species, Value, -ID)
 
 write.csv(dat, "data-raw/p29_input1.csv", row.names=FALSE)
 write.csv(attributes, "data-raw/p29_input2.csv", row.names=FALSE)
