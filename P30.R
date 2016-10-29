@@ -4,8 +4,8 @@ library(tidyr)
 library(MorpheusData)
 
 #############benchmark 30
-dat <- data.frame(sym=c(rep('a', 4), rep('b', 4)), a1=rep(1:2, 4), 
-                 a2=rep(2:1, each=4), b1=rep(1:8), b2=rep(1:8))
+dat <- data.frame(sym=c(rep('a', 3), rep('b', 3)), a1=rep(1:2, 3), 
+                 a2=rep(2:1, each=3), b1=rep(1:6), b2=rep(1:6))
 
 write.csv(dat, "data-raw/p30_input1.csv", row.names=FALSE)
 
