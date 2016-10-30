@@ -7,9 +7,9 @@ library(MorpheusData)
 #dat <- subset(mtcars, gear>3 & cyl >= 4 & hp > 100)
 dat <- read.table(text=
 "GeneID     D.1     T.1      D.8     T.8
-A2M 8876.5 510.5 4318.3 8957.7 4092.4
-ABL1 2120.8 480.3 1694.6   2471 1784.1
-ACP1 1266.6 213.8 1337.9  831.5  814.1
+A2M  18 50 A  B
+ABL1 20 48 C  D 
+ACP1 16 8  E  F
 ", header=T)
 
 write.csv(dat, "data-raw/p7_input1.csv", row.names=FALSE)
