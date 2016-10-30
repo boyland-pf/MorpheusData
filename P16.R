@@ -15,11 +15,16 @@ dat <- read.table(text=
 
 write.csv(dat, "data-raw/p16_input1.csv", row.names=FALSE)
 
-df_out = dat %>%  gather(Week, Value, 4:5) %>%
-        filter(Value > 38.41) %>%
-        group_by(Color,Week) %>%
-        summarise(Count = n()) %>%
-        spread(Week, Count)
+# Original solution from stackoverflow.
+#df_out = dat %>%  gather(Week, Value, 4:5) %>%
+#        filter(Value > 38.41) %>%
+#        group_by(Color,Week) %>%
+#        summarise(Count = n()) %>%
+#        spread(Week, Count)
+
+df_out = dat %>% filter(`W2` > 26.860000) %>% 
+         group_by(`Color`) %>% summarise(sumCount=n()) %>% 
+         group_by(`Color`,`sumCount`) %>% summarise(sumMean=mean(`sumCount`)) 
 
 write.csv(df_out, "data-raw/p16_output1.csv", row.names=FALSE)
 
