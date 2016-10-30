@@ -8,10 +8,10 @@ library(MorpheusData)
 dat <- read.table(text=
 "Id Group Var1 Var2
 1     A good   10
-2     A bad    7
+2     A good    6
 3     A  bad    9
-4     B good    6
-5     B good    8
+4     B good    3
+5     B good    3
 6     B  bad    8
 ", header=T)
 
