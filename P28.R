@@ -4,31 +4,32 @@ library(tidyr)
 library(MorpheusData)
 
 #############benchmark 28
-set.seed(42)
-NumObsTrain=8 # this can be as much as 70 000 000
-NumObsTest=4 # this can be as much as 6 000 000
+dat <- read.table(text=
+"ID    T    P.1 P.2
+1   24.3    10.2    5.5
+2   23.4    10.4    5.7
+", header=T)
 
-#create the TRAIN data set
-train1=floor(runif(NumObsTrain, min=0, max=NumObsTrain+1))
-train1=matrix(train1,ncol = 2)
-train=cbind(8,train1) #week
-train=rbind(train,cbind(9,train1)) #week
-train=cbind(train,runif(NumObsTrain,min=1,max=10)) #order
-train=cbind(c(1:nrow(train)),train)# id number of each row
-colnames(train)=c("id","week","prod","clnt","order")
-train=as.data.frame(train)
-train=train[sample(nrow(train)),] # reflush the rows of train
+train <- read.table(text=
+"id prod clnt    order
+1   8    5 6.912931
+3   2    6 5.119676
+4   7    1 7.472010
+2   8    4 7.345583
+5   8    5 9.412050",
+header=T)
 
-# Create the TEST dataset
-test=train[1:NumObsTest,]
-test[,"week"][1:{NumObsTest/2}]=10
-test[,"week"][{(NumObsTest/2)+1}:NumObsTest]=11
+test <- read.table(text=
+"id prod clnt    order
+3    2    6 5.119676
+5    8    5 9.412050",
+header=T)
 
 write.csv(train, "data-raw/p28_input1.csv", row.names=FALSE)
 write.csv(test, "data-raw/p28_input2.csv", row.names=FALSE)
 
-newtrain <- select(train, 3:5)
-newtest <- select(test, 1,3,4)
+newtrain <- select(train, 2:4)
+newtest <- select(test, 1:3)
 x <- dplyr::inner_join(newtest, newtrain)
 y <- dplyr::group_by(x, prod, clnt)
 df_out <- dplyr::summarise(y, mean.order=mean(order))
