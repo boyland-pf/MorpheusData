@@ -6,10 +6,10 @@ library(MorpheusData)
 #############benchmark 1
 #dat <- subset(mtcars, gear>3 & cyl >= 4 & hp > 100)
 dat <- read.table(text=
-"GeneID     D.1     T.1      D.8     T.8
-A2M  18 50 A  B
-ABL1 20 48 C  D 
-ACP1 16 8  E  F
+"GeneID     D.1     T.1      D.8    
+A2M  18 50 A1 
+ABL1 20 48 C1
+ACP1 16 8  E1
 ", header=T)
 
 write.csv(dat, "data-raw/p7_input1.csv", row.names=FALSE)
@@ -17,7 +17,7 @@ write.csv(dat, "data-raw/p7_input1.csv", row.names=FALSE)
 df_out = dat %>% gather(pt.num.type, value, 2:3) %>%
      separate(pt.num.type, c("type", "pt.num")) %>%
      spread(type, value) %>%
-     mutate(Ratio = D/T) %>% select(-`D.8`, -`T.8`)
+     mutate(Ratio = D/T) %>% select(-`D.8`)
 
 write.csv(df_out, "data-raw/p7_output1.csv", row.names=FALSE)
 
