@@ -5,14 +5,14 @@ library(MorpheusData)
 
 #############benchmark 1
 dat <- read.table(text=
-"ID    T    P.1 P.2
-1   24.3    10.2    5.5
-2   23.4    10.4    5.7
+"ID    T    P.1 P.2 Q.1
+1   24.3    10.2    5.5  4.5
+2   23.4    10.4    5.7  3.2
 ", header=T)
 
 write.csv(dat, "data-raw/p5_input1.csv", row.names=FALSE)
 
-df_out = dat %>% gather(Channel, P, P.1:P.2) %>% 
+df_out = dat %>% gather(Channel, P, P.1:Q.1) %>% 
     separate(Channel, into=c("dummy","Channel")) %>%
     select(c(1,4,2,5))
 
