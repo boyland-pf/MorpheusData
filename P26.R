@@ -6,8 +6,8 @@ library(data.table)
 
 #############benchmark 26
 dat <- as.data.table(data.frame(date = c("2015-08-01","2015-08-02","2015-08-05","2015-08-01","2015-08-09","2015-08-10"),
-                                 directorName = c("Sergey","Sergey","Mike","Mike","Jay","Jay"),
-                                 companyName = c("vino","vino","bolder","bolder","bolder","bolder"),
+                                 directorName = c("Sergey","Sergey","Mike","John","Jay","Jay"),
+                                 companyName = c("vino","vino","bolder","bravo","vino","vino"),
                                  rank = c(29,42,29,27,2,10)))
 
 write.csv(dat, "data-raw/p26_input1.csv", row.names=FALSE)
