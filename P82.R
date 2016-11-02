@@ -7,10 +7,10 @@ library(MorpheusData)
 dat <- read.table(text=
                        "Title Rating Action Sci.Fi
                        Carrie      4      0      1
-         'Fried Green Tomatoes'      2      0      0
+         Fried-Green-Tomatoes      2      0      0
                       Amadeus      5      1      0
-       'Amityville Horror, The'      1      0      0
-  'Dracula: Dead and Loving It'      2      0      1
+       Amityville-Horror      1      0      0
+  Dracula      2      0      1
                         Speed      4      1      0
  ", header=T)
 
