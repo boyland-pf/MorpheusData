@@ -7,20 +7,20 @@ library(data.table)
 set.seed(14592)
 
 dat <- read.table(text=
- " a    b    c   d
-     1    1    1   0
-     1    1    1   200
-     1    1    1   300
-     1    1    2   0
-     1    1    2   600
-     1    2    3   0
-     1    2    3   100
-     1    2    3   200
-     1    3    1   0",header=T)
+ " a    b       d
+     1    1       0
+     1    1       200
+     1    1       300
+     1    1       0
+     1    1       600
+     1    2       0
+     1    2       100
+     1    2       200
+     1    3       0",header=T)
 
 write.csv(dat, "data-raw/p84_input1.csv", row.names=FALSE)
 
-  df_out = dat %>% filter(d != 0) %>% group_by(a, b, c) %>% summarise(mean_d = mean(d))
+  df_out = dat %>% filter(d != 0) %>% group_by(a, b) %>% summarise(mean_d = mean(d))
 
 write.csv(df_out, "data-raw/p84_output1.csv", row.names=FALSE)
 
