@@ -12,7 +12,7 @@ write.csv(dat, "data-raw/p68_input1.csv", row.names=FALSE)
 df_out = dat %>% 
    filter(drug==1) %>%
    group_by(age) %>% 
-   summarise(bfat= mean(bfat))
+   summarise(bfatNew= mean(bfat))
 
 write.csv(df_out, "data-raw/p68_output1.csv", row.names=FALSE)
 
