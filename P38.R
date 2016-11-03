@@ -6,13 +6,13 @@ library(MorpheusData)
 #############benchmark 38
 dat <- read.table(text=
 "
-id  sex age trt.1 response.1 trt.2 response.2
-1    M  15     A          1     B          1
-2    M  22     A          1     B          1
-3    F  43     A          1     B          1
-4    M  28     A          1     B          1
-5    F  39     A          1     B          1
-6    M  47     A          1     B          1
+id  sex  trt.1 response.1 trt.2 response.2
+1    M       A          1     B          1
+2    M       A          1     B          1
+3    F       A          1     B          1
+4    M       A          1     B          1
+5    F       A          1     B          1
+6    M       A          1     B          1
 ", header=T)
 
 
@@ -21,9 +21,9 @@ write.csv(dat, "data-raw/p38_input1.csv", row.names=FALSE)
 
 df_out = dat %>%
   gather(variable, value,
-         trt.1:response.2) %>%
-  separate(variable, c("variable", "number")) %>%
-  spread(variable, value)
+         -id,-sex) %>%
+  separate(variable, c("variableNew", "number")) %>%
+  spread(variableNew, value)
 
 write.csv(df_out, "data-raw/p38_output1.csv", row.names=FALSE)
 
