@@ -6,12 +6,12 @@ library(MorpheusData)
 #############benchmark 64
 dat <- read.table(text=
 "
-  sheetNum year roleInDebate Clarity_1 Effort_1 Clarity_2 Effort_2 Clarity_3 Effort_3
-1 2006            x         3        5        10        4         5        7
-2 2009            y         2        8         3        1         6        8
-3 2013            r         7       10         7        4         5        2
-4 2020            q         4        4         2        9         2        8
-5 2004            b         8        8         3        4         9        5
+year roleInDebate Clarity_1 Effort_1 Clarity_2 Effort_2 Clarity_3 Effort_3
+2006            x         3        5        10        4         5        7
+2009            y         2        8         3        1         6        8
+2013            r         7       10         7        4         5        2
+2020            q         4        4         2        9         2        8
+2004            b         8        8         3        4         9        5
 ", header=T)
 
 
@@ -19,7 +19,7 @@ dat <- read.table(text=
 write.csv(dat, "data-raw/p64_input1.csv", row.names=FALSE)
 
 df_out = dat %>%
-  gather(var, val, -sheetNum, -year, -roleInDebate) %>%
+  gather(var, val, -year, -roleInDebate) %>%
   separate(var, c('skill', 'person')) %>%
   spread(skill, val)
 
