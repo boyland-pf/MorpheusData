@@ -6,12 +6,10 @@ library(MorpheusData)
 #############benchmark 36
 dat <- read.table(text=
 "
-name1 con1_1 con1_2 con1_3 con2_1 con2_2 
+name1 con1_1 con1_2 con2_1 con2_2 con3_1 
 a     23     33     23     27     34    
 b     25     34     22     30     23   
 c     28     29     30     34     29  
-d     33     29     25     25     21 
-e     23     20     31     31     24
 ", header=T)
 
 
@@ -19,7 +17,7 @@ e     23     20     31     31     24
 write.csv(dat, "data-raw/p36_input1.csv", row.names=FALSE)
 
 df_out = dat %>%
-  gather(var, val, con1_1:con2_2) %>%
+  gather(var, val, -name1) %>%
   separate(var, c("var", "time")) %>%
   group_by(name1, var) %>%
   summarise(mVal = mean(val)) %>%
