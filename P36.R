@@ -6,10 +6,10 @@ library(MorpheusData)
 #############benchmark 36
 dat <- read.table(text=
 "
-name1 con1_1 con1_2 con2_1 con3_1 
-a     23     33     23       34    
-b     25     34     22       23   
-c     28     29     30       29  
+name1 con1_1 con1_2 con2_1 
+a     23     33     23    
+b     25     34     22   
+c     28     29     30  
 ", header=T)
 
 
