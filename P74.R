@@ -4,18 +4,27 @@ library(tidyr)
 library(MorpheusData)
 
 #############benchmark 1
+#How to solve this could be our future work.
+#dat <- read.table(text=
+#"ID  MGW.one MGW.two  HEL.one HEL.two
+#A  10.00    19      12 13.00  
+#B -13.29    13      12 -0.12  
+#C  -6.95    10     15  4.00   
+#", header=T)
+
 dat <- read.table(text=
-"age  MGW.1 MGW.2  HEL.1 HEL.2
-12  10.00    19      12 13.00  
-24 -13.29    13      12 -0.12  
-17  -6.95    10     15  4.00   
+"ID  MGW.one MGW.two  HEL.one 
+A  10.00    19      12 
+B -13.29    13      12
+C  -6.95    10     15
 ", header=T)
+
 
 write.csv(dat, "data-raw/p74_input1.csv", row.names=FALSE)
 
-df_out = dat %>% gather(key, value, -`age`) %>%
+df_out = dat %>% gather(key, value, -`ID`) %>%
   separate(key, into = c("label", "num")) %>%
-  group_by(age, label) %>%
+  group_by(ID, label) %>%
   summarise(mean = mean(value)) %>%
   spread(label, mean)
 

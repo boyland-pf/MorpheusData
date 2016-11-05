@@ -14,7 +14,7 @@ B-post   30   28", header=T)
 write.csv(dat, "data-raw/p81_input1.csv", row.names=FALSE)
 
 df_out = dat %>% 
-   separate(Subject, into=c('Subject', 'New')) %>%
+   separate(Subject, into=c('SubjectNew', 'New')) %>%
    gather(Var, Val, Var1,Var2)%>% 
    unite(VarNew, Var, New) %>% 
    spread(VarNew, Val)
