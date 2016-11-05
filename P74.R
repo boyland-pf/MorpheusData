@@ -4,12 +4,21 @@ library(tidyr)
 library(MorpheusData)
 
 #############benchmark 1
+#How to solve this could be our future work.
+#dat <- read.table(text=
+#"ID  MGW.one MGW.two  HEL.one HEL.two
+#A  10.00    19      12 13.00  
+#B -13.29    13      12 -0.12  
+#C  -6.95    10     15  4.00   
+#", header=T)
+
 dat <- read.table(text=
-"ID  MGW.one MGW.two  HEL.one HEL.two
-A  10.00    19      12 13.00  
-B -13.29    13      12 -0.12  
-C  -6.95    10     15  4.00   
+"ID  MGW.one MGW.two  
+A  10.00    19      
+B -13.29    13     
+C  -6.95    10    
 ", header=T)
+
 
 write.csv(dat, "data-raw/p74_input1.csv", row.names=FALSE)
 
