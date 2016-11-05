@@ -9,10 +9,8 @@ dat <-
   data.table(
     data.frame(
       key = c("id1","id2","id3","id4","id5"),
-      c1.min = 1:5,
-      c2.min = 10:14,
-      c1.max = 1:5,
-      c2.max = 1:5))
+      c1.min = 10:14,
+      c1.max = 1:5))
 
 
 
