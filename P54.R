@@ -6,13 +6,13 @@ library(MorpheusData)
 #############benchmark 54
 dat <- read.table(text=
 "
-   Geotype   Strategy Year.1 Year.2 Year.3 
-1     Demand      1      1      1     
-1 Strategy_1      2      2      2    
-1 Strategy_2      3      3      3   
-2     Demand      8      8      8 
-2 Strategy_1      9      9      9
-2 Strategy_2     10     10     10
+   Geotype   Strategy Year.1 Year.2 
+A     Demand      1      5     
+A Strategy_1      2      6    
+A Strategy_2      3      7   
+B     Demand      8      8  
+B Strategy_1      9      9 
+B Strategy_2     10     10
 ", header=T)
 
 

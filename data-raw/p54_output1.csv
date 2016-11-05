@@ -1,7 +1,5 @@
 "Geotype","key","sumVal"
-1,"Year.1",5
-1,"Year.2",5
-1,"Year.3",5
-2,"Year.1",19
-2,"Year.2",19
-2,"Year.3",19
+"A","Year.1",5
+"A","Year.2",13
+"B","Year.1",19
+"B","Year.2",19
