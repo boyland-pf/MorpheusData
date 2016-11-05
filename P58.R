@@ -7,16 +7,11 @@ library(MorpheusData)
 dat <- read.table(text=
 "
 ID  c_Al   c_D    c_Hy      occ
-A     0     0      0        2306
-B     0     0      0        3031
 C     0     0      1        2581
 D     1     0      1        1917
 E     0     0      1        2708
 F     0     1      0        2751
 G     1     1      0        1522
-H     0     1      0        657
-I     0     1      1        469
-J     0     1      1        2629
 ", header=T)
 
 
