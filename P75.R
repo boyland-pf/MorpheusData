@@ -8,15 +8,13 @@ dat <- read.table(text=
 "
  X1    X2    X3
  S1   0.1     1
- S2   0.2     1
+ S2   0.2     2
  S3   0.3     1
- S4   0.4     2
- S5   0.5     2
+ S4   0.4     1
  S1   0.6     2
- S2   0.7     3
- S3   0.8     3
- S4   0.9     3
- S5   1.0     4
+ S2   0.7     1
+ S3   0.8     2
+ S4   0.9     2
 ", header=T)
 
 write.csv(dat, "data-raw/p75_input1.csv", row.names=FALSE)
