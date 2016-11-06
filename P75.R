@@ -15,6 +15,7 @@ dat <- read.table(text=
  S2   0.7     1
  S3   0.8     2
  S4   0.9     2
+ S4   1.9     2
 ", header=T)
 
 write.csv(dat, "data-raw/p75_input1.csv", row.names=FALSE)
