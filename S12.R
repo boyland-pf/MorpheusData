@@ -4,18 +4,6 @@ library(tidyr)
 library(MorpheusData)
 
 #############benchmark 43
-enrolled <- read.table(text=
-"S_key C_name
-S1 class2
-S2 class1
-S4 class2
-S4 class4
-S5 class4
-S7 class5
-S7 class1
-S8 class4
-S10 class5", header=T)
-
 student <- read.table(text=
 "S_key age level
 S1 19 SO

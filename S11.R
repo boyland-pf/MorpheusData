@@ -53,3 +53,5 @@ save(student, file = "sql/student.rdata")
 df1=inner_join(enrolled,student) %>% select(S_name)
 df2=select(student, S_name)
 setdiff(df2,df1)
+
+#anti_join(student,enrolled) %>% select(S_name)

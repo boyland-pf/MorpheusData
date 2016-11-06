@@ -1,0 +1,88 @@
+# making table data sets
+library(dplyr)
+library(tidyr)
+library(MorpheusData)
+
+#############benchmark 43
+catalog <- read.table(text=
+"supplier_key part_id
+S1 P1
+S1 P4
+S1 P2
+S2 P2
+S2 P3
+S3 P5
+S4 P3
+S4 P6
+S5 P4
+S5 P2
+S6 P4
+S7 P6
+S8 P5
+S8 P2
+S9 P1
+S9 P2
+S9 P6
+S10 P6", header=T)
+
+parts <- read.table(text=
+"part_id color
+P1 red
+P2 green
+P3 yellow
+P4 red
+P5 green
+P6 blue", header=T)
+
+suppliers <- read.table(text=
+"supplier_key sname
+S1 SN1
+S2 SN2
+S3 SN3
+S4 SN4
+S5 SN5
+S6 SN6
+S7 SN7
+S8 SN8
+S9 SN9
+S10 SN10", header=T)
+
+write.csv(catalog, "sql/catalog.csv", row.names=FALSE)
+
+catalog <- read.csv("sql/catalog.csv", check.names = FALSE)
+fctr.cols <- sapply(catalog, is.factor)
+int.cols <- sapply(catalog, is.integer)
+catalog[, fctr.cols] <- sapply(catalog[, fctr.cols], as.character)
+catalog[, int.cols] <- sapply(catalog[, int.cols], as.numeric)
+save(catalog, file = "sql/catalog.rdata")
+
+
+write.csv(suppliers, "sql/suppliers.csv", row.names=FALSE)
+
+suppliers <- read.csv("sql/suppliers.csv", check.names = FALSE)
+fctr.cols <- sapply(suppliers, is.factor)
+int.cols <- sapply(suppliers, is.integer)
+suppliers[, fctr.cols] <- sapply(suppliers[, fctr.cols], as.character)
+suppliers[, int.cols] <- sapply(suppliers[, int.cols], as.numeric)
+save(suppliers, file = "sql/suppliers.rdata")
+
+write.csv(parts, "sql/parts.csv", row.names=FALSE)
+
+parts <- read.csv("sql/parts.csv", check.names = FALSE)
+fctr.cols <- sapply(parts, is.factor)
+int.cols <- sapply(parts, is.integer)
+parts[, fctr.cols] <- sapply(parts[, fctr.cols], as.character)
+parts[, int.cols] <- sapply(parts[, int.cols], as.numeric)
+save(parts, file = "sql/parts.rdata")
+
+# 5.2.8
+# the output table from the sql paper is wrong!
+df1=inner_join(parts,catalog) %>%
+	inner_join(suppliers) %>%
+	filter(color == "green") %>%
+	select(sname)
+df2=inner_join(parts,catalog) %>%
+	inner_join(suppliers) %>%
+	filter(color == "red") %>%
+	select(sname)
+intersect(df1,df2)

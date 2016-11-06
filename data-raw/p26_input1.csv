@@ -1,7 +1,8 @@
-"date","directorName","companyName","rank"
-"2015-08-01","Sergey","vino",29
-"2015-08-02","Sergey","vino",42
-"2015-08-05","Mike","bolder",29
-"2015-08-01","John","bravo",27
-"2015-08-09","Jay","vino",2
-"2015-08-10","Jay","vino",10
+"directorName","companyName","rank"
+"Sergey","vino",29
+"Michael","fiesta",42
+"Mike","bolder",29
+"John","bravo",27
+"Jay","fiesta",2
+"Lucy","vino",10
+"Fred","rock",15
