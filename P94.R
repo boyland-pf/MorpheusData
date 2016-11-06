@@ -5,9 +5,11 @@ library(data.table)
 library(MorpheusData)
 
 #############benchmark 1
+dept <- c('CS','EE','Civil','Physics')
+id <- c(1,2,3,4)
 employee <- c('Yossi ','Pitt ','Deepak','Golan')
 salary <- c(21000, 23400, 26800,91000)
-dat <- data.frame(employee,salary)
+dat <- data.frame(id,dept,employee,salary)
 
 write.csv(dat, "data-raw/p94_input1.csv", row.names=FALSE)
 
