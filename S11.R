@@ -59,6 +59,17 @@ s11_input1[, fctr.cols] <- sapply(s11_input1[, fctr.cols], as.character)
 s11_input1[, int.cols] <- sapply(s11_input1[, int.cols], as.numeric)
 save(s11_input1, file = "data/s11_input1.rdata")
 
+
+write.csv(student, "data-raw/s11_input2.csv", row.names=FALSE)
+s11_input2 <- read.csv("data-raw/s11_input2.csv", check.names = FALSE)
+fctr.cols <- sapply(s11_input2, is.factor)
+int.cols <- sapply(s11_input2, is.integer)
+s11_input2[, fctr.cols] <- sapply(s11_input2[, fctr.cols], as.character)
+s11_input2[, int.cols] <- sapply(s11_input2[, int.cols], as.numeric)
+save(s11_input2, file = "data/s11_input2.rdata")
+
+
+
 df1=inner_join(enrolled,student) %>% select(S_name)
 df2=select(student, S_name)
 output=setdiff(df2,df1)
