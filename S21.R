@@ -82,13 +82,13 @@ s21_input1[, int.cols] <- sapply(s21_input1[, int.cols], as.numeric)
 save(s21_input1, file = "data/s21_input1.rdata")
 
 output=input %>% filter(color == "red" | color == "green") %>% select(sname) %>% distinct()
-write.csv(output, "data-raw/s21_input1.csv", row.names=FALSE)
-s21_input1 <- read.csv("data-raw/s21_input1.csv", check.names = FALSE)
-fctr.cols <- sapply(s21_input1, is.factor)
-int.cols <- sapply(s21_input1, is.integer)
-s21_input1[, fctr.cols] <- sapply(s21_input1[, fctr.cols], as.character)
-s21_input1[, int.cols] <- sapply(s21_input1[, int.cols], as.numeric)
-save(s21_input1, file = "data/s21_input1.rdata")
+write.csv(output, "data-raw/s21_output1.csv", row.names=FALSE)
+s21_output1 <- read.csv("data-raw/s21_output1.csv", check.names = FALSE)
+fctr.cols <- sapply(s21_output1, is.factor)
+int.cols <- sapply(s21_output1, is.integer)
+s21_output1[, fctr.cols] <- sapply(s21_output1[, fctr.cols], as.character)
+s21_output1[, int.cols] <- sapply(s21_output1[, int.cols], as.numeric)
+save(s21_output1, file = "data/s21_output1.rdata")
 
 # 5.2.9
 inner_join(parts,catalog) %>%
