@@ -1,0 +1,16 @@
+"C_name","F_key","S_key","F_name","major","age"
+"class1","f1","S2","faculty1","Computer",21
+"class1","f1","S7","faculty1","English",21
+"class2","f2","S1","faculty2","History",20
+"class2","f2","S3","faculty2","Computer",23
+"class2","f2","S4","faculty2","Math",18
+"class2","f2","S6","faculty2","Math",22
+"class2","f2","S9","faculty2","History",21
+"class3","f1","S6","faculty1","Math",22
+"class4","f3","S4","faculty3","Math",18
+"class4","f3","S5","faculty3","History",22
+"class4","f3","S8","faculty3","English",23
+"class5","f4","S3","faculty4","Computer",23
+"class5","f4","S7","faculty4","English",21
+"class5","f4","S9","faculty4","History",21
+"class5","f4","S10","faculty4","History",22

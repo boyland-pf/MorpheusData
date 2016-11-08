@@ -27,23 +27,23 @@ F3 teach3
 F4 teach4
 F5 teach5",header=T)
 
-write.csv(class, "sql/class.csv", row.names=FALSE)
-write.csv(faculty, "sql/faculty.csv", row.names=FALSE)
+# write.csv(class, "sql/class.csv", row.names=FALSE)
+# write.csv(faculty, "sql/faculty.csv", row.names=FALSE)
 
 
-faculty <- read.csv("sql/faculty.csv", check.names = FALSE)
-fctr.cols <- sapply(faculty, is.factor)
-int.cols <- sapply(faculty, is.integer)
-faculty[, fctr.cols] <- sapply(faculty[, fctr.cols], as.character)
-faculty[, int.cols] <- sapply(faculty[, int.cols], as.numeric)
-save(faculty, file = "sql/faculty.rdata")
+# faculty <- read.csv("sql/faculty.csv", check.names = FALSE)
+# fctr.cols <- sapply(faculty, is.factor)
+# int.cols <- sapply(faculty, is.integer)
+# faculty[, fctr.cols] <- sapply(faculty[, fctr.cols], as.character)
+# faculty[, int.cols] <- sapply(faculty[, int.cols], as.numeric)
+# save(faculty, file = "sql/faculty.rdata")
 
-class <- read.csv("sql/class.csv", check.names = FALSE)
-fctr.cols <- sapply(class, is.factor)
-int.cols <- sapply(class, is.integer)
-class[, fctr.cols] <- sapply(class[, fctr.cols], as.character)
-class[, int.cols] <- sapply(class[, int.cols], as.numeric)
-save(class, file = "sql/class.rdata")
+# class <- read.csv("sql/class.csv", check.names = FALSE)
+# fctr.cols <- sapply(class, is.factor)
+# int.cols <- sapply(class, is.integer)
+# class[, fctr.cols] <- sapply(class[, fctr.cols], as.character)
+# class[, int.cols] <- sapply(class[, int.cols], as.numeric)
+# save(class, file = "sql/class.rdata")
 
 # 5.1.5
 # how to determine 3 = count(distinct(class,Room))
@@ -60,6 +60,24 @@ save(class, file = "sql/class.rdata")
 #summarise(n = n()) %>%
 #inner_join(count(distinct(class,Room))) %>% 
 #select(F_name)
+
+input=inner_join(class,faculty)
+write.csv(input, "data-raw/s5_input1.csv", row.names=FALSE)
+s5_input1 <- read.csv("data-raw/s5_input1.csv", check.names = FALSE)
+fctr.cols <- sapply(s5_input1, is.factor)
+int.cols <- sapply(s5_input1, is.integer)
+s5_input1[, fctr.cols] <- sapply(s5_input1[, fctr.cols], as.character)
+s5_input1[, int.cols] <- sapply(s5_input1[, int.cols], as.numeric)
+save(s5_input1, file = "data/s5_input1.rdata")
+
+output=input %>% group_by(F_name) %>% summarise(n = n()) %>% filter(n == max(n)) %>% select(F_name)
+write.csv(output, "data-raw/s5_output1.csv", row.names=FALSE)
+s5_output1 <- read.csv("data-raw/s5_output1.csv", check.names = FALSE)
+fctr.cols <- sapply(s5_output1, is.factor)
+int.cols <- sapply(s5_output1, is.integer)
+s5_output1[, fctr.cols] <- sapply(s5_output1[, fctr.cols], as.character)
+s5_output1[, int.cols] <- sapply(s5_output1[, int.cols], as.numeric)
+save(s5_output1, file = "data/s5_output1.rdata")
 
 # if you assume some teacher teaches on every class then you could use the following query
 inner_join(class,faculty) %>% 

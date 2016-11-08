@@ -62,22 +62,22 @@ S10 C14
 S5 C14
 S6 C14",header=T)
 
-write.csv(id_class_5_1_3, "sql/id_class_5_1_3.csv", row.names=FALSE)
-write.csv(id_enroll_5_1_3, "sql/id_enroll_5_1_3.csv", row.names=FALSE)
+# write.csv(id_class_5_1_3, "sql/id_class_5_1_3.csv", row.names=FALSE)
+# write.csv(id_enroll_5_1_3, "sql/id_enroll_5_1_3.csv", row.names=FALSE)
 
-id_class_5_1_3 <- read.csv("sql/id_class_5_1_3.csv", check.names = FALSE)
-fctr.cols <- sapply(id_class_5_1_3, is.factor)
-int.cols <- sapply(id_class_5_1_3, is.integer)
-id_class_5_1_3[, fctr.cols] <- sapply(id_class_5_1_3[, fctr.cols], as.character)
-id_class_5_1_3[, int.cols] <- sapply(id_class_5_1_3[, int.cols], as.numeric)
-save(id_class_5_1_3, file = "sql/id_class_5_1_3.rdata")
+# id_class_5_1_3 <- read.csv("sql/id_class_5_1_3.csv", check.names = FALSE)
+# fctr.cols <- sapply(id_class_5_1_3, is.factor)
+# int.cols <- sapply(id_class_5_1_3, is.integer)
+# id_class_5_1_3[, fctr.cols] <- sapply(id_class_5_1_3[, fctr.cols], as.character)
+# id_class_5_1_3[, int.cols] <- sapply(id_class_5_1_3[, int.cols], as.numeric)
+# save(id_class_5_1_3, file = "sql/id_class_5_1_3.rdata")
 
-id_enroll_5_1_3 <- read.csv("sql/id_enroll_5_1_3.csv", check.names = FALSE)
-fctr.cols <- sapply(id_enroll_5_1_3, is.factor)
-int.cols <- sapply(id_enroll_5_1_3, is.integer)
-id_enroll_5_1_3[, fctr.cols] <- sapply(id_enroll_5_1_3[, fctr.cols], as.character)
-id_enroll_5_1_3[, int.cols] <- sapply(id_enroll_5_1_3[, int.cols], as.numeric)
-save(id_enroll_5_1_3, file = "sql/id_enroll_5_1_3.rdata")
+# id_enroll_5_1_3 <- read.csv("sql/id_enroll_5_1_3.csv", check.names = FALSE)
+# fctr.cols <- sapply(id_enroll_5_1_3, is.factor)
+# int.cols <- sapply(id_enroll_5_1_3, is.integer)
+# id_enroll_5_1_3[, fctr.cols] <- sapply(id_enroll_5_1_3[, fctr.cols], as.character)
+# id_enroll_5_1_3[, int.cols] <- sapply(id_enroll_5_1_3[, int.cols], as.numeric)
+# save(id_enroll_5_1_3, file = "sql/id_enroll_5_1_3.rdata")
 
 # 5.1.3
 #sol1 <- group_by(id_enroll_5_1_3,ID_key) %>% 
@@ -85,6 +85,24 @@ save(id_enroll_5_1_3, file = "sql/id_enroll_5_1_3.rdata")
 #inner_join(id_class_5_1_3) %>% 
 #filter(Room == "R128" | n > 4) %>% 
 #select(ID_key)
+
+input=inner_join(id_class_5_1_3,id_enroll_5_1_3)
+write.csv(input, "data-raw/s3_input1.csv", row.names=FALSE)
+s3_input1 <- read.csv("data-raw/s3_input1.csv", check.names = FALSE)
+fctr.cols <- sapply(s3_input1, is.factor)
+int.cols <- sapply(s3_input1, is.integer)
+s3_input1[, fctr.cols] <- sapply(s3_input1[, fctr.cols], as.character)
+s3_input1[, int.cols] <- sapply(s3_input1[, int.cols], as.numeric)
+save(s3_input1, file = "data/s3_input1.rdata")
+
+output=input %>% group_by(ID_key,Room) %>% summarize(n = n()) %>% filter(Room == "R128" | n > 4) %>% select(ID_key)
+write.csv(output, "data-raw/s3_output1.csv", row.names=FALSE)
+s3_output1 <- read.csv("data-raw/s3_output1.csv", check.names = FALSE)
+fctr.cols <- sapply(s3_output1, is.factor)
+int.cols <- sapply(s3_output1, is.integer)
+s3_output1[, fctr.cols] <- sapply(s3_output1[, fctr.cols], as.character)
+s3_output1[, int.cols] <- sapply(s3_output1[, int.cols], as.numeric)
+save(s3_output1, file = "data/s3_output1.rdata")
 
 # alternative -- only works because the same class is always taught in the same room
 inner_join(id_class_5_1_3,id_enroll_5_1_3) %>% 

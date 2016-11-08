@@ -56,30 +56,48 @@ f2 faculty2
 f3 faculty3
 f4 faculty4",header=T)
 
-write.csv(class, "sql/class.csv", row.names=FALSE)
-write.csv(enroll, "sql/enroll.csv", row.names=FALSE)
-write.csv(faculty, "sql/faculty.csv", row.names=FALSE)
+# write.csv(class, "sql/class.csv", row.names=FALSE)
+# write.csv(enroll, "sql/enroll.csv", row.names=FALSE)
+# write.csv(faculty, "sql/faculty.csv", row.names=FALSE)
 
-enroll <- read.csv("sql/enroll.csv", check.names = FALSE)
-fctr.cols <- sapply(enroll, is.factor)
-int.cols <- sapply(enroll, is.integer)
-enroll[, fctr.cols] <- sapply(enroll[, fctr.cols], as.character)
-enroll[, int.cols] <- sapply(enroll[, int.cols], as.numeric)
-save(enroll, file = "sql/enroll.rdata")
+# enroll <- read.csv("sql/enroll.csv", check.names = FALSE)
+# fctr.cols <- sapply(enroll, is.factor)
+# int.cols <- sapply(enroll, is.integer)
+# enroll[, fctr.cols] <- sapply(enroll[, fctr.cols], as.character)
+# enroll[, int.cols] <- sapply(enroll[, int.cols], as.numeric)
+# save(enroll, file = "sql/enroll.rdata")
 
-faculty <- read.csv("sql/faculty.csv", check.names = FALSE)
-fctr.cols <- sapply(faculty, is.factor)
-int.cols <- sapply(faculty, is.integer)
-faculty[, fctr.cols] <- sapply(faculty[, fctr.cols], as.character)
-faculty[, int.cols] <- sapply(faculty[, int.cols], as.numeric)
-save(faculty, file = "sql/faculty.rdata")
+# faculty <- read.csv("sql/faculty.csv", check.names = FALSE)
+# fctr.cols <- sapply(faculty, is.factor)
+# int.cols <- sapply(faculty, is.integer)
+# faculty[, fctr.cols] <- sapply(faculty[, fctr.cols], as.character)
+# faculty[, int.cols] <- sapply(faculty[, int.cols], as.numeric)
+# save(faculty, file = "sql/faculty.rdata")
 
-class <- read.csv("sql/class.csv", check.names = FALSE)
-fctr.cols <- sapply(class, is.factor)
-int.cols <- sapply(class, is.integer)
-class[, fctr.cols] <- sapply(class[, fctr.cols], as.character)
-class[, int.cols] <- sapply(class[, int.cols], as.numeric)
-save(class, file = "sql/class.rdata")
+# class <- read.csv("sql/class.csv", check.names = FALSE)
+# fctr.cols <- sapply(class, is.factor)
+# int.cols <- sapply(class, is.integer)
+# class[, fctr.cols] <- sapply(class[, fctr.cols], as.character)
+# class[, int.cols] <- sapply(class[, int.cols], as.numeric)
+# save(class, file = "sql/class.rdata")
+
+input=inner_join(class, enroll) %>% inner_join(faculty)
+write.csv(input, "data-raw/s6_input1.csv", row.names=FALSE)
+s6_input1 <- read.csv("data-raw/s6_input1.csv", check.names = FALSE)
+fctr.cols <- sapply(s6_input1, is.factor)
+int.cols <- sapply(s6_input1, is.integer)
+s6_input1[, fctr.cols] <- sapply(s6_input1[, fctr.cols], as.character)
+s6_input1[, int.cols] <- sapply(s6_input1[, int.cols], as.numeric)
+save(s6_input1, file = "data/s6_input1.rdata")
+
+output=input %>% group_by(F_name) %>% summarise(n = n()) %>% filter (n < 5 | n == 5) %>% select(F_name)
+write.csv(output, "data-raw/s6_output1.csv", row.names=FALSE)
+s6_output1 <- read.csv("data-raw/s6_output1.csv", check.names = FALSE)
+fctr.cols <- sapply(s6_output1, is.factor)
+int.cols <- sapply(s6_output1, is.integer)
+s6_output1[, fctr.cols] <- sapply(s6_output1[, fctr.cols], as.character)
+s6_output1[, int.cols] <- sapply(s6_output1[, int.cols], as.numeric)
+save(s6_output1, file = "data/s6_output1.rdata")
 
 # original table from sqlsynthesizer is not consistent with the textbook
 # 5.1.6
@@ -87,6 +105,6 @@ inner_join(class, enroll) %>%
 inner_join(faculty) %>% 
 group_by(F_name) %>% 
 summarise(n = n()) %>% 
-#filter (n < 5 | n == 5) %>% # the table from sqlsynthesizer would require this filter instead
-filter (n < 5) %>% 
+filter (n < 5 | n == 5) %>% # the table from sqlsynthesizer would require this filter instead
+#filter (n < 5) %>% 
 select(F_name)
