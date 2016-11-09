@@ -29,12 +29,13 @@ dat3 <- read.table(text=
  20013      Site      
 ", header=T)
 
-dat <- inner_join(dat1,dat2) %>% inner_join(dat3)
+dat <- inner_join(dat1,dat2) %>% inner_join(dat3) %>% select(1,3,4,5,6,7)
 
 write.csv(dat, "data-raw/f4_input1.csv", row.names=FALSE)
 
 df_out = dat %>% 
-  filter(T1Column4 == '01-01-11') %>% select(T1Column1, T2Column3, T1Column4, T3Column2)
+  filter(T1Column4 == '01-01-11') %>% 
+  select(-T1Column3,-T2Column3)
 
 write.csv(df_out, "data-raw/f4_output1.csv", row.names=FALSE)
 
