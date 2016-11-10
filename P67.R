@@ -7,12 +7,15 @@ library(data.table)
 #############benchmark 1
 dat <- read.table(text=
 " id time
-  1    1
-  2    1
-  2    2
-  3    1
-  4    1
-  4    2
+   1    1
+   2    1
+   2    2
+   3    1
+   3    2
+   4    1
+   4    2
+   5    2
+   6    2
 ", header=T)
   
 
