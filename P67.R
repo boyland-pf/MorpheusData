@@ -12,9 +12,9 @@ dat <- read.table(text=
    2    2
    3    1
    3    2
-   4    1
-   4    2
+   5    1
    5    2
+   4    2
    6    2
 ", header=T)
   
