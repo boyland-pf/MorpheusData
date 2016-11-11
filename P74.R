@@ -13,10 +13,10 @@ library(MorpheusData)
 #", header=T)
 
 dat <- read.table(text=
-"ID  MGW.one MGW.two  HEL.one HEL.two
-A  10.00    19      12 13
-B -13.29    13      12 -0.12
-C  -6.95    10     15 4.00
+"ID  MGW.one MGW.two  MGW.three
+A  10.00    19.00     18.00
+B -13.29    13.00  	  -3.02    
+C  -6.95    10.00     -18.00
 ", header=T)
 
 
