@@ -16,6 +16,8 @@ dat <- read.table(text=
    4    2
    4    3
    3    1
+   5    1
+   6    1
 ", header=T)
   
 
