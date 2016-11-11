@@ -13,7 +13,7 @@ library(MorpheusData)
 #", header=T)
 
 dat <- read.table(text=
-"ID  MGW.one MGW.two  HEL.all
+"ID  MGW.one MGW.two  HEL.mean
 A  10.00    19.00     19
 B -13.29    13.00  	  13
 C  -6.95    10.00     10
@@ -27,6 +27,10 @@ df_out = dat %>% gather(key, value, -`ID`) %>%
   group_by(ID, label) %>%
   summarise(mean = mean(value)) %>%
   spread(label, mean)
+
+# df_out = dat %>% select(-`HEL.mean`) %>% gather(key, value, -`ID`) %>%
+#   group_by(ID) %>%
+#   summarise(mean = mean(value))
 
 write.csv(df_out, "data-raw/p74_output1.csv", row.names=FALSE)
 
