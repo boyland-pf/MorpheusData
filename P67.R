@@ -7,21 +7,21 @@ library(data.table)
 #############benchmark 1
 dat <- read.table(text=
 " id time
-   2    1
    1    1
-   1    2
-   7    1
-   8    1
-   5    1
-   5    2
+   3    1
+   3    2
+   3    3
+   2    1
+   4    1
    4    2
-   6    2
+   4    3
+   2    2
 ", header=T)
   
 
 write.csv(dat, "data-raw/p67_input1.csv", row.names=FALSE)
 
-df_out=dat %>% group_by(id) %>% summarise(total=n()) %>% filter(total > 1) %>% select(-total) %>% inner_join(dat)
+df_out=dat %>% group_by(id) %>% summarise(total=n()) %>% filter(total > 2) %>% select(-total) %>% inner_join(dat)
 
 write.csv(df_out, "data-raw/p67_output1.csv", row.names=FALSE)
 
