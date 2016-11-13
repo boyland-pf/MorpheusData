@@ -19,8 +19,8 @@ dat <- read.table(text=
 1 Empenigr 11.13
 2 Empenigr  0.17
 3 Empenigr  1.55
-1 Rhodtome  0.00
-2 Rhodtome  0.00
+1 Rhodtome  0.17
+2 Rhodtome  1.55
 3 Rhodtome  3.00",
 header=T)
 
