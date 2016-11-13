@@ -14,7 +14,7 @@ ACP1 1266.6 213.8 1337.9  831.5  814.1
 write.csv(dat, "data-raw/p6_input1.csv", row.names=FALSE)
 
 df_out = dat %>% 
-  gather(pt.num.type, value, 2:3) %>%
+  gather(pt.num.type, value, 2:4) %>%
   separate(pt.num.type, c("type", "pt.num")) %>%
   group_by(GeneID, type) %>%
   summarise(sum = sum(value))
