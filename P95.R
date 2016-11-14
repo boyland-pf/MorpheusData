@@ -14,7 +14,8 @@ dat <- read.table(text=
 
 write.csv(dat, "data-raw/p95_input1.csv", row.names=FALSE)
 
-df_out = dat %>% gather(var, val, -1) %>% filter(val!=0) %>% select(-3) %>% arrange(order_id)
+df_out = dat %>% gather(var, val, -1) %>% filter(val!=0) %>% select(-3) 
+#%>% arrange(order_id)
 
 write.csv(df_out, "data-raw/p95_output1.csv", row.names=FALSE)
 

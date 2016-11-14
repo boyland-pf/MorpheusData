@@ -18,9 +18,9 @@ df_out = dat %>% gather(var, val, -obs) %>%
     # separate into key and test labels
     separate(var, c('key', 'var')) %>% 
     # spread to wide form
-    spread(var, val) %>%
+    spread(var, val) #%>%
     # make it pretty so pre is before post for each obs
-    arrange(obs, desc(key))
+    #arrange(obs, desc(key))
 
 write.csv(df_out, "data-raw/p21_output1.csv", row.names=FALSE)
 
