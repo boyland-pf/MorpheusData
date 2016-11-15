@@ -52,10 +52,10 @@ p26_input1[, int.cols] <- sapply(p26_input1[, int.cols], as.numeric)
 save(p26_input1, file = "data/p26_input1.rdata")
 
 
-p26_input1 <- read.csv("data-raw/p26_input1.csv", check.names = FALSE)
-fctr.cols <- sapply(p26_input1, is.factor)
-int.cols <- sapply(p26_input1, is.integer)
+p26_input2 <- read.csv("data-raw/p26_input2.csv", check.names = FALSE)
+fctr.cols <- sapply(p26_input2, is.factor)
+int.cols <- sapply(p26_input2, is.integer)
 
-p26_input1[, fctr.cols] <- sapply(p26_input1[, fctr.cols], as.character)
-p26_input1[, int.cols] <- sapply(p26_input1[, int.cols], as.numeric)
-save(p26_input1, file = "data/p26_input1.rdata")
+p26_input2[, fctr.cols] <- sapply(p26_input2[, fctr.cols], as.character)
+p26_input2[, int.cols] <- sapply(p26_input2[, int.cols], as.numeric)
+save(p26_input2, file = "data/p26_input2.rdata")
