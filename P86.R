@@ -12,6 +12,11 @@ sample_ID   site      species TOT inf_status
 487405  site_2  Species_B   1   positive
 487405  site_2  Species_A   1   positive
 382899  site_1  Species_A   1   positive
+382899  site_1  Species_C   1   positive
+382899  site_2  Species_C   10   positive
+382899  site_1  Species_D   1   positive
+382899  site_2  Species_D   20   positive
+
 ", header=T)
 
 write.csv(dat, "data-raw/p86_input1.csv", row.names=FALSE)
