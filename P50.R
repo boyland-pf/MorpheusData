@@ -30,21 +30,21 @@ df_out =   t1 %>% group_by(source, tone) %>%
 
 #df_out
 
-write.csv(df_out, "data-raw/p26_output1.csv", row.names=FALSE)
-write.csv(t1, "data-raw/p26_input1.csv", row.names=FALSE)
+write.csv(df_out, "data-raw/p50_output1.csv", row.names=FALSE)
+write.csv(t1, "data-raw/p50_input1.csv", row.names=FALSE)
 
-p26_output1 <- read.csv("data-raw/p26_output1.csv", check.names = FALSE)
-fctr.cols <- sapply(p26_output1, is.factor)
-int.cols <- sapply(p26_output1, is.integer)
+p50_output1 <- read.csv("data-raw/p50_output1.csv", check.names = FALSE)
+fctr.cols <- sapply(p50_output1, is.factor)
+int.cols <- sapply(p50_output1, is.integer)
 
-p26_output1[, fctr.cols] <- sapply(p26_output1[, fctr.cols], as.character)
-p26_output1[, int.cols] <- sapply(p26_output1[, int.cols], as.numeric)
-save(p26_output1, file = "data/p26_output1.rdata")
+p50_output1[, fctr.cols] <- sapply(p50_output1[, fctr.cols], as.character)
+p50_output1[, int.cols] <- sapply(p50_output1[, int.cols], as.numeric)
+save(p50_output1, file = "data/p50_output1.rdata")
 
-p26_input1 <- read.csv("data-raw/p26_input1.csv", check.names = FALSE)
-fctr.cols <- sapply(p26_input1, is.factor)
-int.cols <- sapply(p26_input1, is.integer)
+p50_input1 <- read.csv("data-raw/p50_input1.csv", check.names = FALSE)
+fctr.cols <- sapply(p50_input1, is.factor)
+int.cols <- sapply(p50_input1, is.integer)
 
-p26_input1[, fctr.cols] <- sapply(p26_input1[, fctr.cols], as.character)
-p26_input1[, int.cols] <- sapply(p26_input1[, int.cols], as.numeric)
-save(p26_input1, file = "data/p26_input1.rdata")
+p50_input1[, fctr.cols] <- sapply(p50_input1[, fctr.cols], as.character)
+p50_input1[, int.cols] <- sapply(p50_input1[, int.cols], as.numeric)
+save(p50_input1, file = "data/p50_input1.rdata")
