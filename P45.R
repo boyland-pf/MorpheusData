@@ -14,10 +14,8 @@ dat <- read.table(text=
 256883.9 4945 429.30         114
 256884.6 4115 428.93         114
 256885.4 4945 529.50          20
-256886.1 4945 429.67          33
-256885.1 4942 419.67          33
-256885.1 4942 619.67          44
-256885.1 4942 719.67          44
+256886.1 4945 629.67          33
+256885.1 4942 619.67          33
 ", header=T)
 
 
@@ -27,9 +25,9 @@ write.csv(dat, "data-raw/p45_input1.csv", row.names=FALSE)
 # needs to use the same variable in summarise
 df_out = dat %>%
   group_by(cluster) %>%
-  summarise(Z= min(Z)) %>% inner_join(dat) 
+  summarise(Z= min(Z)) %>% inner_join(dat) %>% select(-`Z`)
 
-df_out
+#df_out
 
 write.csv(df_out, "data-raw/p45_output1.csv", row.names=FALSE)
 
