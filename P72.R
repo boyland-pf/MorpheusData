@@ -5,17 +5,22 @@ library(MorpheusData)
 
 #############benchmark 1
 dat <- read.table(text=
-"   score group category
-1      4    a1      big
-2      6    a1      big
-3     10    a1      big
-4      4    a1      big
-5     10    a1    small
-6      7    a2      big
-7      1    a2      big
-8      4    a2      big
-9      8    a2      big
-10     4    a2    small
+"score group category
+     10    a1      big
+      8    a1      big
+      9    a1      big
+      1    a1      big
+      5    a1    small
+      8    a2      big
+      2    a2      big
+      8    a2      big
+      5    a2      big
+     6    a2    small
+     9    a3      big
+     4    a3      big
+     7    a3      big
+     9    a3      big
+     9    a3    small
 ", header=T)
 
 write.csv(dat, "data-raw/p72_input1.csv", row.names=FALSE)
