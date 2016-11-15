@@ -24,13 +24,12 @@ dat <- read.table(text=
 
 write.csv(dat, "data-raw/p45_input1.csv", row.names=FALSE)
 
+# needs to use the same variable in summarise
 df_out = dat %>%
   group_by(cluster) %>%
-  summarise(Z = min(Z)) %>%
-  inner_join(dat) 
-  #%>% select(-Z)
+  summarise(Z= min(Z)) %>% inner_join(dat) 
 
-#df_out
+df_out
 
 write.csv(df_out, "data-raw/p45_output1.csv", row.names=FALSE)
 
