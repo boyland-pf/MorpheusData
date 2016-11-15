@@ -10,7 +10,9 @@ dat <- read.table(text=
  2     2015     A
  3     2015     B
  4     2014     A
- 5     2014     B", header=T)
+ 5     2014     B
+ 6     2015     A
+ ", header=T)
 
 write.csv(dat, "data-raw/p92_input1.csv", row.names=FALSE)
 
