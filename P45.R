@@ -21,7 +21,7 @@ write.csv(dat, "data-raw/p45_input1.csv", row.names=FALSE)
 
 df_out = dat %>%
   group_by(cluster) %>%
-  summarise(newZ = min(Z)) %>%
+  summarise(Z = min(Z)) %>%
   inner_join(dat) %>% select(-Z)
 
 write.csv(df_out, "data-raw/p45_output1.csv", row.names=FALSE)
