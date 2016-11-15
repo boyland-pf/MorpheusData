@@ -20,8 +20,8 @@ df_out = dat %>%
   gather (g, m, Error1_Group1,Error2_Group1) %>%
   separate (g, c("Measure", "mGroup")) %>% 
   spread (Measure, m) %>% 
-  select (1,2,3,5,4,6) %>%
-  arrange (Timepoint) 
+  select (1,2,3,5,4,6)
+#  arrange (Timepoint) 
 
 write.csv(df_out, "data-raw/p15_output1.csv", row.names=FALSE)
 
