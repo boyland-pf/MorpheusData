@@ -7,12 +7,15 @@ library(MorpheusData)
 dat <- read.table(text=
 "
        X       Y      Z          cluster
-245 256882.0 4115 426.50          20
-246 256882.7 4115 426.42          57
-247 256883.9 4945 429.30         114
-248 256884.6 4115 428.93         114
-249 256885.4 4945 429.50          98
-250 256886.1 4945 429.67          33
+256872.0 4114 422.50          10
+256882.0 4115 426.50          20
+256882.7 4115 426.42          57
+256881.7 4135 421.42          57
+256883.9 4945 429.30         114
+256884.6 4115 428.93         114
+256885.4 4945 429.50          20
+256886.1 4945 429.67          33
+256885.1 4942 419.67          33
 ", header=T)
 
 
@@ -22,7 +25,10 @@ write.csv(dat, "data-raw/p45_input1.csv", row.names=FALSE)
 df_out = dat %>%
   group_by(cluster) %>%
   summarise(Z = min(Z)) %>%
-  inner_join(dat) %>% select(-Z)
+  inner_join(dat) 
+  #%>% select(-Z)
+
+df_out
 
 write.csv(df_out, "data-raw/p45_output1.csv", row.names=FALSE)
 
