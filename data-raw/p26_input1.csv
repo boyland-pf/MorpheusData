@@ -1,8 +1,4 @@
-"directorName","companyName","rank"
-"Sergey","vino",29
-"Michael","fiesta",42
-"Mike","bolder",29
-"John","bravo",27
-"Jay","fiesta",2
-"Lucy","vino",10
-"Fred","rock",15
+"Town","Captured","Proportion"
+"A",184,0.25
+"B",243,0.33
+"C",12,0.02
