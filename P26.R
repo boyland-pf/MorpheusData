@@ -9,7 +9,6 @@ t1 <- read.table(text=
 "  Town Captured Proportion
 A      184       0.25
 B      243       0.33
-C       12       0.02
 ", header=T)
 
 t2  <- read.table(text=
@@ -18,18 +17,13 @@ Town  Species Freq
 A funestus  106
 A funestus    7
 B funestus    5
-C funestus    4
 A  gambiae   38
 A  gambiae    6
 B  gambiae  234
-C  gambiae    6
 ",header=T)
 
-t2sum <- dcast(melt(t2), Town ~ Species, fun.aggregate = sum)
-# or with 'as.data.frame(t2)' instead of 'melt(t2)'
-t2sum <- dcast(as.data.frame(t2), Town ~ Species, fun.aggregate = sum)
-
-df_out = merge(t1, t2sum, by = 'Town')
+d1 = t2 %>% group_by(Town,Species) %>% summarise(f=sum(Freq)) %>% spread(Species,f)
+df_out = inner_join(t1,d1)
 
 write.csv(df_out, "data-raw/p26_output1.csv", row.names=FALSE)
 write.csv(t1, "data-raw/p26_input1.csv", row.names=FALSE)
