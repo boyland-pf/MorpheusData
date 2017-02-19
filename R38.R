@@ -13,7 +13,7 @@ df2 <- data.frame(x,z)
 write.csv(df1, "data-raw/r38_input1.csv", row.names=FALSE)
 write.csv(df2, "data-raw/r38_input2.csv", row.names=FALSE)
 
-df_out = inner_join(df1, df2) %>% group_by(x) %>% summarise(z=sum(z))
+df_out = inner_join(df1, df2) %>% group_by(x) %>% summarise(newZ=sum(z))
 
 write.csv(df_out, "data-raw/r38_output1.csv", row.names=FALSE)
 
