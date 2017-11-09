@@ -1,0 +1,11 @@
+"Color","Type","W1","W2","W3","W4"
+"red","Outdoor",2,3,4,5
+"red","Indoor",5,6,7,8
+"blue","Both",6,7,8,9
+"green","Indoor",8,9,10,11
+"blue","Indoor",11,12,13,14
+"blue","Both",12,13,14,15
+"red","Indoor",14,15,16,17
+"red","Outdoor",14,15,16,17
+"yellow","Outdoor",12,13,14,15
+"green","Indoor",2,3,4,5
