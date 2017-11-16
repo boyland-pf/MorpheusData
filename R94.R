@@ -22,10 +22,10 @@ write.csv(dat, "data-raw/r94_input1.csv", row.names=FALSE)
 
 df_out <- read.table(text=
 "
-      Var    0    1
-      c_Al    1965.833333    1719.5
-      c_D    2402.0    1605.6
-      c_Hy    1643.333333    2060.8
+      0    1
+      1965.833333    1719.5
+      2402.0    1605.6
+      1643.333333    2060.8
 ", header=T)
 
 

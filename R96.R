@@ -7,20 +7,20 @@ library(MorpheusData)
 #############benchmark 1
 dat <- read.table(text=
 "
-      Subject    Var1    Var2    Var3    Var4
-      A-pre    25    27    23    0
-      A-post    25    26    25    120
-      B-pre    30    28    27    132
-      B-post    30    28    26    140
+      Subject    Var1    Var2    Var3
+      A-pre    1    8    20
+      A-post    2    9    21
+      B-pre    3    10    27
+      B-post    4    11    26
 ", header=T)
 
 write.csv(dat, "data-raw/r96_input1.csv", row.names=FALSE)
 
 df_out <- read.table(text=
 "
-      SubjectNew    Var1_post    Var1_pre    Var2_post    Var2_pre    Var3_post    Var3_pre    Var4_post    Var4_pre
-      A    25    25    26    27    25    23    120    0
-      B    30    30    28    28    26    27    140    132
+      Col1    Var1_pre    Var2_post    Var2_pre    Var3_post    Var3_pre
+      A    1    9    8    21    20
+      B    3    11    10    26    27
 ", header=T)
 
 

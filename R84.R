@@ -17,13 +17,9 @@ write.csv(dat, "data-raw/r84_input1.csv", row.names=FALSE)
 
 df_out <- read.table(text=
 "
-      GeneID    type    sum
-      A2M    D    67044.55
-      A2M    T    46310.3
-      ABL1    D    18435.7
-      ABL1    T    14603.9
-      ACP1    D    8992.75
-      ACP1    T    9013.95
+      col1    A2M    ABL1    ACP1
+      D    67044.55    18435.7    8992.75
+      T    46310.3    14603.9    9013.95
 ", header=T)
 
 

@@ -7,11 +7,11 @@ library(MorpheusData)
 #############benchmark 1
 dat <- read.table(text=
 "
-      ID    A    B    C    D
-      ID1    1    1    0    0
-      ID2    0    1    0    1
-      ID3    1    1    0    1
-      ID4    1    1    1    1
+      ID    Name    A    B    C
+      ID1    A1    1    5    9
+      ID2    B1    2    6    10
+      ID3    C1    3    7    11
+      ID4    D1    4    8    12
 ", header=T)
 
 write.csv(dat, "data-raw/r86_input1.csv", row.names=FALSE)
@@ -19,10 +19,10 @@ write.csv(dat, "data-raw/r86_input1.csv", row.names=FALSE)
 df_out <- read.table(text=
 "
       ID    flag
-      ID1    2
-      ID2    2
-      ID3    3
-      ID4    4
+      ID1    14
+      ID2    16
+      ID3    18
+      ID4    20
 ", header=T)
 
 

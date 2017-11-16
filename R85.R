@@ -7,6 +7,7 @@ library(MorpheusData)
 #############benchmark 1
 dat <- read.table(text=
 "
+
       name    metric    values
       Eric    height    6
       Bob    height    5
@@ -15,18 +16,32 @@ dat <- read.table(text=
       Bob    weight    118
       Eric    weight    100
       Mark    weight    180
-      Eric    grade    A
-      Bob    grade    B
-      Mark    grade    C
+      Eric    grade    2
+      Bob    grade    2
+      Eric    weight    10
+      Tom    weight    80
+      Kara    grade    9
+      Jim    grade    8
+      Mark    grade    4
+      Jim    height    11
+      Kara    height    33
+      Kara    weight    99
+      Jim    weight    90
+      Tom    grade    5
+      Tom    height    109
+
 ", header=T)
 
 write.csv(dat, "data-raw/r85_input1.csv", row.names=FALSE)
 
 df_out <- read.table(text=
 "
-      name    grade    height    weight
-      Bob    1    1    2
-      Eric    1    1    1
+      name    grade    height
+      Bob    1    1
+      Eric    1    1
+      Jim    1    1
+      Kara    1    1
+      Tom    1    1
 ", header=T)
 
 

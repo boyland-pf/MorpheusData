@@ -7,13 +7,13 @@ library(MorpheusData)
 #############benchmark 1
 dat <- read.table(text=
 "
-      Title    Rating    Action    Sci.Fi    Animation
-      Carrie    4    0    1    1
-      Fried-Green-Tomatoes    2    0    0    0
-      Amadeus    5    1    0    1
-      Amityville-Horror    1    0    0    0
-      Dracula    2    0    1    1
-      Speed    4    1    0    0
+      Title    MISC    Rating    Action    Sci.Fi
+      Carrie    A    4    10    20
+      Fried-Green-Tomatoes    B    2    11    21
+      Amadeus    C    5    12    22
+      Amityville-Horror    D    1    13    23
+      Dracula    E    2    14    24
+      Speed    F    4    15    25
 ", header=T)
 
 write.csv(dat, "data-raw/r98_input1.csv", row.names=FALSE)
@@ -21,9 +21,8 @@ write.csv(dat, "data-raw/r98_input1.csv", row.names=FALSE)
 df_out <- read.table(text=
 "
       genre    average
-      Action    4.5
-      Animation    3.66667
-      Sci.Fi    3.0
+      Action    4
+      Sci.Fi    3
 ", header=T)
 
 
